@@ -18,18 +18,22 @@
     @{
         var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
     }
-    <li>
-        <a href="@Url.RouteUrl("NewProducts")">Products</a>
-        <ul>
-            @foreach (var category in rootCategories)
-            {
-                var categoryLineModel = new TopMenuModel.CategoryLineModel
-                {
-                    Category = category
-                };
-                @await Html.PartialAsync("_CategoryLine.TopMenu", categoryLineModel)
-            }
-        </ul>
+    <li class="has-sublist with-dropdown-in-grid">
+        <span href="@Url.RouteUrl("NewProducts")">Products</span>
+        <div class="dropdown categories fullWidth boxes-4">
+            <div class="row-wrapper">
+                <div class="row">
+                    @foreach (var category in rootCategories)
+                    {
+                        var categoryLineModel = new TopMenuModel.CategoryLineModel
+                        {
+                            Category = category
+                        };
+                        @await Html.PartialAsync("_CategoryLine.TopMenu", categoryLineModel)
+                    }
+                </div>
+            </div>
+        </div>
     </li>
     @foreach (var topic in Model.Topics)
     {

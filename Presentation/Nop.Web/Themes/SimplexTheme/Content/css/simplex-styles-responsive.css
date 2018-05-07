@@ -89,6 +89,14 @@
         color: #f3cc2e;
     }
 
+    .mega-menu .has-sublist.with-dropdown-in-grid .dropdown.categories{
+        display: none;
+    }
+
+    .mega-menu .has-sublist.with-dropdown-in-grid:hover .dropdown {
+        display: block;
+    }
+
     .mega-menu .dropdown {
         display: none;
         position: absolute;
@@ -96,9 +104,6 @@
         text-align: left;
     }
 
-    .mega-menu .with-dropdown-in-grid:hover > div {
-        display: block;
-    }
     /*.mega-menu .dropdown.active {
         display: block !important;
     }*/
