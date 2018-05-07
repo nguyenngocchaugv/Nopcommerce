@@ -1,0 +1,12 @@
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\net461\Nop.Plugin.DiscountRules.CustomerRoles.csproj.CoreCompileInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\net461\Nop.Plugin.DiscountRules.CustomerRoles.AssemblyInfoInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\net461\Nop.Plugin.DiscountRules.CustomerRoles.AssemblyInfo.cs
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\net461\Nop.Plugin.DiscountRules.CustomerRoles.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\net461\Nop.Plugin.DiscountRules.CustomerRoles.pdb
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\plugin.json
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Views\Configure.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Views\_ViewImports.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\logo.jpg
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\DiscountRules.CustomerRoles\Nop.Plugin.DiscountRules.CustomerRoles.pdb
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.DiscountRules.CustomerRoles\obj\Debug\net461\Nop.Plugin.DiscountRules.CustomerRoles.csproj.CopyComplete

@@ -1,0 +1,28 @@
+﻿@model Nop.Web.Models.Catalog.CategorySimpleModel
+<li class="has-sublist with-dropdown-in-grid">
+    @*<span class="with-subcategories single-item-categories labelfornextplusbutton"></span>
+        <div class="dropdown categories fullWidth boxes-4">
+            <div class="row-wrapper">
+                <div class="row"></div>
+            </div>
+        </div>*@
+    <span class="with-subcategories single-item-categories labelfornextplusbutton" href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" role="button" aria-expanded="false">
+        @Model.Name
+        @if (Model.NumberOfProducts.HasValue)
+        {
+            <text> </text>@T("Categories.TotalProducts", Model.NumberOfProducts.Value)
+        }
+    </span>
+    @{
+        <div class="dropdown categories fullWidth boxes-4">
+            <div class="row-wrapper">
+                <div class="row">
+                    @foreach (var subCategory in Model.SubCategories)
+                    {
+                        @await Html.PartialAsync("_CategorySubCategoryLine.TopMenu", subCategory)
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</li>

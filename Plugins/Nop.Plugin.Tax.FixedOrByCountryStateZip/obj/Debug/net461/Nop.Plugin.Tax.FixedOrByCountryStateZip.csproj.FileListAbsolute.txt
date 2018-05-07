@@ -1,0 +1,14 @@
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\plugin.json
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\Configure.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_CountryStateZip.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_FixedRate.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_ViewImports.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\logo.jpg
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\net461\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CoreCompileInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\net461\Nop.Plugin.Tax.FixedOrByCountryStateZip.AssemblyInfoInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\net461\Nop.Plugin.Tax.FixedOrByCountryStateZip.AssemblyInfo.cs
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\net461\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CopyComplete
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\net461\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\net461\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb

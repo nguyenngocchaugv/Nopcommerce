@@ -1,0 +1,14 @@
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\plugin.json
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Views\Configure.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Views\PaymentInfo.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Views\_ViewImports.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\logo.jpg
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Payments.CheckMoneyOrder\Nop.Plugin.Payments.CheckMoneyOrder.pdb
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.csprojResolveAssemblyReference.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.csproj.CoreCompileInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.AssemblyInfoInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.AssemblyInfo.cs
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.csproj.CopyComplete
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Payments.CheckMoneyOrder\obj\Debug\net461\Nop.Plugin.Payments.CheckMoneyOrder.pdb

@@ -1,0 +1,15 @@
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\plugin.json
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\logo.png
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Views\Configure.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Views\Create.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Views\Edit.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Views\_CreateOrUpdate.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Views\_ViewImports.cshtml
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Nop.Plugin.Pickup.PickupInStore.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Presentation\Nop.Web\Plugins\Pickup.PickupInStore\Nop.Plugin.Pickup.PickupInStore.pdb
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\net461\Nop.Plugin.Pickup.PickupInStore.csproj.CoreCompileInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\net461\Nop.Plugin.Pickup.PickupInStore.AssemblyInfoInputs.cache
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\net461\Nop.Plugin.Pickup.PickupInStore.AssemblyInfo.cs
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\net461\Nop.Plugin.Pickup.PickupInStore.csproj.CopyComplete
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\net461\Nop.Plugin.Pickup.PickupInStore.dll
+E:\ProjectSVN\nopCommerce_4.00_Source\Plugins\Nop.Plugin.Pickup.PickupInStore\obj\Debug\net461\Nop.Plugin.Pickup.PickupInStore.pdb
