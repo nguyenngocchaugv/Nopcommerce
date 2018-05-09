@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Nop.Web.Framework.Mvc.Models;
+using Nop.Web.Models.Media;
 
 namespace Nop.Web.Models.Catalog
 {
@@ -13,6 +14,8 @@ namespace Nop.Web.Models.Catalog
         public string Name { get; set; }
 
         public string SeName { get; set; }
+
+        public PictureModel Picture { get; set;}
 
         public int? NumberOfProducts { get; set; }
 

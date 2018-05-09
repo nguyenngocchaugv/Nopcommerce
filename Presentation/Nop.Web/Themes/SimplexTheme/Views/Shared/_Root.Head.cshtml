@@ -12,7 +12,8 @@
 @inject StoreInformationSettings storeInformationSettings
 @{   
     //resources
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/simplex.js");
+    Html.AppendScriptParts(ResourceLocation.Head, "~/Themes/SimplexTheme/Content/js/simplex.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/venture.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/owl.carousel.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/bootstrap.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");

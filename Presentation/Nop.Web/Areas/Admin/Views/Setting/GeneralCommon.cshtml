@@ -216,9 +216,9 @@
                                 <nop-override-store-checkbox asp-for="DisplayDefaultMenuItemSettings.DisplayForumsMenuItem_OverrideForStore" asp-input="DisplayDefaultMenuItemSettings.DisplayForumsMenuItem" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
                                 <nop-label asp-for="DisplayDefaultMenuItemSettings.DisplayForumsMenuItem" />
                             </div>
-                            <div class="col-md-9">  
+                            <div class="col-md-9">
                                 <nop-editor asp-for="DisplayDefaultMenuItemSettings.DisplayForumsMenuItem" />
-                                <span asp-validation-for="DisplayDefaultMenuItemSettings.DisplayForumsMenuItem"></span> 
+                                <span asp-validation-for="DisplayDefaultMenuItemSettings.DisplayForumsMenuItem"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -229,6 +229,16 @@
                             <div class="col-md-9">
                                 <nop-editor asp-for="DisplayDefaultMenuItemSettings.DisplayContactUsMenuItem" />
                                 <span asp-validation-for="DisplayDefaultMenuItemSettings.DisplayContactUsMenuItem"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <nop-override-store-checkbox asp-for="DisplayDefaultMenuItemSettings.DisplayManufacturersMenuItem_OverrideForStore" asp-input="DisplayDefaultMenuItemSettings.DisplayManufacturersMenuItem" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                                <nop-label asp-for="DisplayDefaultMenuItemSettings.DisplayManufacturersMenuItem" />
+                            </div>
+                            <div class="col-md-9">
+                                <nop-editor asp-for="DisplayDefaultMenuItemSettings.DisplayManufacturersMenuItem" />
+                                <span asp-validation-for="DisplayDefaultMenuItemSettings.DisplayManufacturersMenuItem"></span>
                             </div>
                         </div>
                     </div>

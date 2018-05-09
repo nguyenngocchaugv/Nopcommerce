@@ -351,6 +351,9 @@ namespace Nop.Web.Areas.Admin.Models.Settings
             [NopResourceDisplayName("Admin.Configuration.Settings.GeneralCommon.DisplayDefaultMenuItemSettings.DisplayContactUsMenuItem")]
             public bool DisplayContactUsMenuItem { get; set; }
             public bool DisplayContactUsMenuItem_OverrideForStore { get; set; }
+            [NopResourceDisplayName("Admin.Configuration.Settings.GeneralCommon.DisplayDefaultMenuItemSettings.DisplayManufacturersMenuItem")]
+            public bool DisplayManufacturersMenuItem { get; set; }
+            public bool DisplayManufacturersMenuItem_OverrideForStore { get; set; }
         }
 
         public partial class AdminAreaSettingsModel : BaseNopModel

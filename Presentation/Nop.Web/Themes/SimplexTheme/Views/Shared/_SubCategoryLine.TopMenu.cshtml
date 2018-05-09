@@ -1,8 +1,14 @@
 ﻿@model Nop.Web.Models.Catalog.CategorySimpleModel
 <div class="box">
     <div class="picture-title-wrap">
-        <div class="title"><a>@Model.Name</a></div>
-        <div class="picture"></div>
+        <div class="title">
+            <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })">@Model.Name</a>
+        </div>
+        <div class="picture">
+            <a>
+                <img class="lazy" src="@Model.Picture.ImageUrl"/>
+            </a>
+        </div>
     </div>
 
     <ul class="subcategories">
@@ -10,9 +16,10 @@
             @foreach (var subCategory in Model.SubCategories)
             {
                 <li class="subcategory-item">
-                    <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })">
+                    <a href="@Url.RouteUrl("Category", new { SeName = subCategory.SeName })">
                         <span class="row">
-                            @await Html.PartialAsync("_CategorySubCategoryLine.TopMenu", subCategory)
+                            @subCategory.Name
+                            @*@await Html.PartialAsync("_CategorySubCategoryLine.TopMenu", subCategory)*@
                         </span>
                     </a>
                 </li>

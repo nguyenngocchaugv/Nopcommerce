@@ -607,7 +607,8 @@ namespace Nop.Web.Factories
                 DisplayCustomerInfoMenuItem = _displayDefaultMenuItemSettings.DisplayCustomerInfoMenuItem,
                 DisplayBlogMenuItem = _displayDefaultMenuItemSettings.DisplayBlogMenuItem,
                 DisplayForumsMenuItem = _displayDefaultMenuItemSettings.DisplayForumsMenuItem,
-                DisplayContactUsMenuItem = _displayDefaultMenuItemSettings.DisplayContactUsMenuItem
+                DisplayContactUsMenuItem = _displayDefaultMenuItemSettings.DisplayContactUsMenuItem,
+                DisplayManufacturersMenuItem = _displayDefaultMenuItemSettings.DisplayManufacturersMenuItem
             };
             return model;
         }
@@ -691,6 +692,8 @@ namespace Nop.Web.Factories
         {
             var result = new List<CategorySimpleModel>();
 
+            var pictureSize = _mediaSettings.CategoryThumbPictureSize;
+
             //little hack for performance optimization.
             //we know that this method is used to load top and left menu for categories.
             //it'll load all categories anyway.
@@ -715,6 +718,21 @@ namespace Nop.Web.Factories
                     SeName = category.GetSeName(),
                     IncludeInTopMenu = category.IncludeInTopMenu
                 };
+
+                //prepare picture model
+                var categoryPictureCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_PICTURE_MODEL_KEY, category.Id, pictureSize, true, _workContext.WorkingLanguage.Id, _webHelper.IsCurrentConnectionSecured(), _storeContext.CurrentStore.Id);
+                categoryModel.Picture = _cacheManager.Get(categoryPictureCacheKey, () =>
+                {
+                    var picture = _pictureService.GetPictureById(category.PictureId);
+                    var pictureModel = new PictureModel
+                    {
+                        FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
+                        ImageUrl = _pictureService.GetPictureUrl(picture, pictureSize),
+                        Title = string.Format(_localizationService.GetResource("Media.Category.ImageLinkTitleFormat"), categoryModel.Name),
+                        AlternateText = string.Format(_localizationService.GetResource("Media.Category.ImageAlternateTextFormat"), categoryModel.Name)
+                    };
+                    return pictureModel;
+                });
 
                 //number of products in each category
                 if (_catalogSettings.ShowCategoryProductNumber)
@@ -938,6 +956,9 @@ namespace Nop.Web.Factories
                     TotalManufacturers = manufacturers.TotalCount
                 };
 
+               
+                
+
                 foreach (var manufacturer in manufacturers)
                 {
                     var modelMan = new ManufacturerBriefInfoModel
@@ -947,6 +968,23 @@ namespace Nop.Web.Factories
                         SeName = manufacturer.GetSeName(),
                         IsActive = currentManufacturer != null && currentManufacturer.Id == manufacturer.Id,
                     };
+                    
+
+                    //prepare picture model
+                    var pictureSize = _mediaSettings.ManufacturerThumbPictureSize;
+                    var manufacturerPictureCacheKey = string.Format(ModelCacheEventConsumer.MANUFACTURER_PICTURE_MODEL_KEY, manufacturer.Id, pictureSize, true, _workContext.WorkingLanguage.Id, _webHelper.IsCurrentConnectionSecured(), _storeContext.CurrentStore.Id);
+                    modelMan.ModelPicture = _cacheManager.Get(manufacturerPictureCacheKey, () =>
+                    {
+                        var picture = _pictureService.GetPictureById(manufacturer.PictureId);
+                        var pictureModel = new PictureModel
+                        {
+                            FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
+                            ImageUrl = _pictureService.GetPictureUrl(picture, pictureSize),
+                            Title = string.Format(_localizationService.GetResource("Media.Manufacturer.ImageLinkTitleFormat"), modelMan.Name),
+                            AlternateText = string.Format(_localizationService.GetResource("Media.Manufacturer.ImageAlternateTextFormat"), modelMan.Name)
+                        };
+                        return pictureModel;
+                    });
                     model.Manufacturers.Add(modelMan);
                 }
                 return model;

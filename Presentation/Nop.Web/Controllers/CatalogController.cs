@@ -183,7 +183,7 @@ namespace Nop.Web.Controllers
             var model = _catalogModelFactory.PrepareManufacturerAllModels();
             return View(model);
         }
-        
+
         #endregion
 
         #region Vendors

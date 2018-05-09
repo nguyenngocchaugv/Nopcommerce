@@ -6,6 +6,18 @@
 }
 <div class="page home-page">
     <div class="page-body">
+        <div class="video-slider-wrapper">
+            <div id="video-player" class="video-player" data-id="73MZ3qhJ36M" data-platform-url="https://www.youtube.com/embed/">
+                <img alt="Cover photo" src="~/Themes/SimplexTheme/Content/img/default-video-cover.png" />
+                <div class="video-overlay"></div>
+                <div class="play-button-wrapper">
+                    <h3 class="video-button-title">See the Motion</h3>
+                    <h4 class="video-button-subtitle">Feel The Speed</h4>
+                    <div class="play">Play</div>
+                </div>
+            </div>
+            <script src="https://www.youtube.com/iframe_api"></script>
+        </div>
         @await Component.InvokeAsync("TopicBlock", new { systemName = "HomePageText" })
         @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_categories" })
         @await Component.InvokeAsync("HomepageCategories")

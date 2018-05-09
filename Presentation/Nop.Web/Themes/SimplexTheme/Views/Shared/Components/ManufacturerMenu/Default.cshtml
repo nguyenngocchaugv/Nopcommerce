@@ -1,0 +1,17 @@
+﻿@model ManufacturerNavigationModel
+@if (Model.Manufacturers.Count > 0)
+{
+    @foreach (var manufacturer in Model.Manufacturers)
+    {
+        <div class="box">
+            <div class="picture">
+                <a class="manufacturer">
+                    <img src="@manufacturer.ModelPicture.ImageUrl" />
+                </a>
+            </div>
+            <div class="title">
+                <a href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })"><span>@manufacturer.Name</span></a>
+            </div>
+        </div>
+    }
+}

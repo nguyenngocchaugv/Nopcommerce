@@ -39,6 +39,19 @@
     {
         <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
     }
+    @if (Model.DisplayManufacturersMenuItem)
+    {
+        <li class="manufacturermenu">
+            <a href="@Url.RouteUrl("ManufacturerList")"><span>Manufacturers</span></a>
+            <div class="dropdown manufacturers fullWidth boxes-6">
+                <div class="row-wrapper">
+                    <div class="row">
+                        @await Component.InvokeAsync("ManufacturerMenu")
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
     @if (Model.NewProductsEnabled && Model.DisplayNewProductsMenuItem)
     {
         <li><a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a></li>
@@ -51,6 +64,10 @@
     {
         <li><a href="@Url.RouteUrl("CustomerInfo")">@T("Account.MyAccount")</a></li>
     }
+    @if (Model.DisplayContactUsMenuItem)
+    {
+        <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+    }
     @if (Model.BlogEnabled && Model.DisplayBlogMenuItem)
     {
         <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
@@ -58,10 +75,6 @@
     @if (Model.ForumEnabled && Model.DisplayForumsMenuItem)
     {
         <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
-    }
-    @if (Model.DisplayContactUsMenuItem)
-    {
-        <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
     }
     @await Component.InvokeAsync("Widget", new { widgetZone = "header_menu_after" })
 </ul>
