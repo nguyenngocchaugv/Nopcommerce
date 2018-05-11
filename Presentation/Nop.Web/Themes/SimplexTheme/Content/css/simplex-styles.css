@@ -18,6 +18,39 @@
     src: url('../fonts/venture-font.woff') format('woff');
 }
 
+* {
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0 !important;
+    overflow-x: hidden; /*safari horizontal scroll fix*/
+    -webkit-text-size-adjust: none;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a img {
+    border: none;
+}
+
+a:active {
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
 body {
     max-width: 100%;
     font: normal 15px 'Fjalla One', sans-serif;
@@ -442,6 +475,94 @@ strong {
     padding-top: 66%;
     display: block;
 }
+.spc-categories .category-picture img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    max-width: 100%;
+    margin: auto;
+}
+.spc-categories .category-title, .spc-categories .category-title a {
+    color: #f3cc2e;
+}
+.spc-categories .category-title {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    font-size: 25px;
+    color: #f3cc2e;
+    overflow: hidden;
+    z-index: 2;
+}
+.spc-categories .category-title a {
+    display: block;
+    position: relative;
+    z-index: 2;
+    padding: 15px 25px;
+}
+.spc-categories .category-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -18px;
+    right: 18px;
+    bottom: 0;
+    background: #000;
+    opacity: .7;
+    -o-transform: skewX(30deg);
+    -webkit-transform: skewX(30deg);
+    -moz-transform: skewX(30deg);
+    -ms-transform: skewX(30deg);
+    transform: skewX(30deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    z-index: 1;
+}
+.spc-categories .category-sublist li {
+    display: inline-block;
+}
+.spc-categories .category-sublist li a {
+    display: block;
+    color: #2c2c2c;
+    font: normal 14px 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 12px 22px;
+}
+.spc .navigation li.active span {
+    color: #2c2c2c;
+}
+
+.spc .navigation li.active span:before {
+    content: '';
+    height: 3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: -2.5px;
+    background: #f3cc2e;
+    -o-transform: skewX(-30deg);
+    -webkit-transform: skewX(-30deg);
+    -moz-transform: skewX(-30deg);
+    -ms-transform: skewX(-30deg);
+    transform: skewX(-30deg);
+}
+
+.spc-categories .product-grid {
+    display: none;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+.spc-categories .product-grid.active {
+    display: block;
+}
+
 /* FLYOUT CART STYLE */
 .flyout-main-wrapper .flyout-cart-wrapper {
     position: absolute;
