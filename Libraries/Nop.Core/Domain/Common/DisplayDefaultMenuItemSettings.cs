@@ -41,5 +41,12 @@ namespace Nop.Core.Domain.Common
         /// Gets or sets a value indicating whether to display "contact us" menu item
         /// </summary>
         public bool DisplayContactUsMenuItem { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to display "Manufacturers" menu item
+        /// </summary>
+        public bool DisplayManufacturersMenuItem { get; set; }
+
+
     }
 }

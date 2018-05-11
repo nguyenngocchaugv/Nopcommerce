@@ -4,6 +4,7 @@
     //page class
     Html.AppendPageCssClassParts("html-home-page");
 }
+
 <div class="page home-page">
     <div class="page-body">
         <div class="video-slider-wrapper">
@@ -18,12 +19,71 @@
             </div>
             <script src="https://www.youtube.com/iframe_api"></script>
         </div>
+        <form id="AjaxFiltersProForm">
+            <div class="home-page-filters-wrapper ajax-filters-pro">
+                <div class="home-page-filters">
+                    <div class="home-page-filter-title">
+                        <strong>Find the products you like:</strong>
+                    </div>
+                    <div class="home-page-filter-selector">
+                        <span style="" class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="categories_listbox" aria-disabled="false" aria-readonly="false" aria-busy="false" aria-activedescendant="categories_option_selected">
+                            <span unselectable="on" class="k-dropdown-wrap k-state-default">
+                                <span unselectable="on" class="k-input">Category</span>
+                                <span unselectable="on" class="k-select">
+                                    <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                                </span>
+                            </span>
+                            <input type="hidden" id="categories" name="categoryId" value="" autocomplete="off" data-role="dropdownlist" style="display: none;">
+                        </span>
+                    </div>
+                    <div class="home-page-filter-selector">
+                        <span class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="ajax-filters-pro-subcategories_listbox" aria-disabled="true" aria-readonly="false">
+                            <span unselectable="on" class="k-dropdown-wrap k-state-disabled">
+                                <span unselectable="on" class="k-input">Subcategory</span>
+                                <span unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s">select</span></span>
+                            </span>
+                            <input type="hidden" id="ajax-filters-pro-subcategories" name="subCategoryId" value="" autocomplete="off" data-role="dropdownlist" style="display: none;" disabled="disabled">
+                        </span>
+                    </div>
+                    <div class="home-page-filter-selector">
+                        <span style="" class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="manufacturers_listbox" aria-disabled="true" aria-readonly="false">
+                            <span unselectable="on" class="k-dropdown-wrap k-state-disabled">
+                                <span unselectable="on" class="k-input">Manufacturer</span>
+                                <span unselectable="on" class="k-select">
+                                    <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                                </span>
+                            </span>
+                            <input type="hidden" id="manufacturers" name="manufacturerId" value="" autocomplete="off" data-role="dropdownlist" style="display: none;" disabled="disabled">
+                        </span>
+                    </div>
+                    <div class="home-page-filter-selector">
+                        <span style="" class="k-widget k-dropdown k-header ajaxFiltersProSpecificationItem" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" aria-owns="specification_3_listbox" aria-disabled="true" aria-readonly="false">
+                            <span unselectable="on" class="k-dropdown-wrap k-state-disabled">
+                                <span unselectable="on" class="k-input">Free Return</span>
+                                <span unselectable="on" class="k-select">
+                                    <span unselectable="on" class="k-icon k-i-arrow-s">select</span>
+                                </span>
+                            </span>
+                            <input type="hidden" id="specification_3" name="specificationOptions" value="" class="ajaxFiltersProSpecificationItem" data-id="3" data-name="Free Return" autocomplete="off" data-role="dropdownlist" style="display: none;" disabled="disabled">
+                        </span>
+                    </div>
+                    <div class="home-page-filter-button">
+                        <span id="home-page-filter-total-products-count" class="results-number"></span>
+                        <button type="submit" class="search-button" disabled>SEARCH</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="spc-categories-wrapper">
+            @await Component.InvokeAsync("HomepageCategories")
+        </div>
         @await Component.InvokeAsync("TopicBlock", new { systemName = "HomePageText" })
         @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_categories" })
-        @await Component.InvokeAsync("HomepageCategories")
+       
         @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_products" })
         @await Component.InvokeAsync("HomepageProducts")
         @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_best_sellers" })
+
         @await Component.InvokeAsync("HomepageBestSellers")
         @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_before_news" })
         @await Component.InvokeAsync("HomepageNews")
