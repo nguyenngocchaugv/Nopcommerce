@@ -1,16 +1,24 @@
 ﻿@model NewsletterBoxModel
-<div class="block block-newsletter">
-    <div class="listbox">
+<div class="footer-block newsletter">
+    <div class="title">
+        <strong>@T("Newsletter.Title")</strong>
+    </div>
+    <div class="footer-collapse">
+        <p class="newsletter-subscribe-text">
+            Subscribe and become part of the our community. Be the first to hear about our latest offers and discounts!
+        </p>
+    </div>
+    <div class="newsletter">
         <div id="newsletter-subscribe-block" class="newsletter-subscribe-block">
             <div class="newsletter-email">
-                <strong>@T("Newsletter.Title")</strong>
                 <div class="form-group">
-                    <input asp-for="NewsletterEmail" id="newsletter-email" class="newsletter-subscribe-text form-control" placeholder=@T("Newsletter.Email.Placeholder") />
+                    <input asp-for="NewsletterEmail" id="newsletter-email" class="newsletter-subscribe-text form-control newsletter-box" placeholder=@T("Newsletter.Email.Placeholder") />
                     <input type="button" value="@T(Model.AllowToUnsubscribe ? "Newsletter.Options.Send" : "Newsletter.Options.Subscribe")" id="newsletter-subscribe-button" class="btn btn-default newsletter-subscribe-button" />
+                    <span id="subscribe-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait...")</span>
                 </div>
-                <span asp-validation-for="NewsletterEmail"></span>
+                @Html.ValidationMessageFor(x => x.NewsletterEmail)
             </div>
-	        @if (Model.AllowToUnsubscribe)
+            @if (Model.AllowToUnsubscribe)
             {
                 <div class="options">
                     <span class="subscribe">
@@ -24,12 +32,10 @@
                 </div>
             }
         </div>
-	    <div class="newsletter-validation">
-            <span id="subscribe-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait...")</span>
+        <div class="newsletter-validation">
             <span asp-validation-for="NewsletterEmail"></span>
         </div>
-        <div id="newsletter-result-block" class="newsletter-result-block newsletter-result">
-        </div>
+        <div class="newsletter-result-block newsletter-result" id="newsletter-result-block"></div>
     </div>
     <script type="text/javascript" asp-location="Footer">
         function newsletter_subscribe(subscribe) {
