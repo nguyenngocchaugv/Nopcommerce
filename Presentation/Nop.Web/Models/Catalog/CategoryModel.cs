@@ -22,6 +22,8 @@ namespace Nop.Web.Models.Catalog
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
         public string SeName { get; set; }
+
+        public int ParentCategoryId { get; set; }
         
         public PictureModel PictureModel { get; set; }
 
