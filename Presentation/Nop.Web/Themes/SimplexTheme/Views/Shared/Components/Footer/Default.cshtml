@@ -3,153 +3,109 @@
 @using Nop.Core.Domain.Tax
 @inject IWorkContext workContext;
 <div class="footer">
-    <div class="footer-upper">
-        <div class="container">
-            <div class="row">
-                <div class="column newsletter-wrapper col-sm-7 col-md-6">
-                    @await Component.InvokeAsync("NewsletterBox")
-                </div>
-                <div class="column follow-us col-sm-5 col-md-6">
-                    @await Component.InvokeAsync("SocialButtons")
-                </div>
-            </div>
+    <div class="footer-map-holder">
+        <div class="title">
+            <script type="text/javascript">
+                var display = false;
+
+                function test() {
+                    if (display) {
+                        $(".footer-map").addClass("footer-map-hide");
+                        $(".footer-map").removeClass("footer-map-show");
+                        $(".footer .title").removeClass("open");
+                    } else {
+                        $(".footer-map").removeClass("footer-map-hide");
+                        $(".footer-map").addClass("footer-map-show");
+                        $(".footer .title").addClass("open");
+                    }                    
+                    display = !display;
+                }
+            </script>
+            <strong onclick="test();">Store Location</strong>
+        </div>
+        <div class="footer-map-wrapper">
+            <div class="footer-map footer-map-hide" style="position: relative; overflow: hidden;" data-pathtoimages="http://themes.venture1.nop-templates.com/Plugins/SevenSpikes.Theme.Venture/Images" data-latitude="51.51462249999999" data-longitude="-0.14491950000001452" data-mapstyles="[{ &quot;stylers&quot;: [{ &quot;saturation&quot;: -100 }] }]"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div style="position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; z-index: 0;" class="gm-style"><div style="z-index: 0; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;" tabindex="0"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -207, -36); z-index: 1;"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 768px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 768px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -207, -36); z-index: 1;"><div style="overflow: hidden; position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 768px; top: -256px; width: 256px; height: 256px;"></div><div style="overflow: hidden; position: absolute; left: 768px; top: 0px; width: 256px; height: 256px;"></div></div></div><div style="width: 21px; height: 38px; overflow: hidden; position: absolute; left: -11px; top: -38px; z-index: 0;"><img style="position: absolute; left: 0px; top: 0px; width: 21px; height: 38px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" alt="" src="http://themes.venture1.nop-templates.com/Plugins/SevenSpikes.Theme.Venture/Images/footer-map-marker-icon.png" draggable="false"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -207, -36); z-index: 1;"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16370!3i10895!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=29991"></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16369!3i10895!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=122435"></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16369!3i10894!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=100942"></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16371!3i10894!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=63616"></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16370!3i10894!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=8498"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16371!3i10895!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=85109"></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16368!3i10894!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=45824"></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16372!3i10895!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=9156"></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16368!3i10895!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=67317"></div><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16372!3i10894!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=118734"></div><div style="position: absolute; left: 768px; top: -256px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16373!3i10894!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=42781"></div><div style="position: absolute; left: 768px; top: 0px; width: 256px; height: 256px;"><img style="width: 256px; height: 256px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" draggable="false" alt="" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i15!2i16373!3i10895!4i256!2m3!1e0!2sm!3i422122000!3m14!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2sp.s%3A-100!4e0!5m1!5f2!23i1301875&amp;token=64274"></div></div></div></div><div style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;" class="gm-style-pbc"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"><div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div><div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><div style="width: 37px; height: 54px; overflow: hidden; position: absolute; opacity: 0.01; cursor: pointer; left: -19px; top: -46px; z-index: 0;" class="gmnoprint" title=""><img style="position: absolute; left: 0px; top: 0px; width: 37px; height: 54px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none;" alt="" src="http://themes.venture1.nop-templates.com/Plugins/SevenSpikes.Theme.Venture/Images/footer-map-marker-icon.png" draggable="false"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div><iframe style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: medium none;" src="about:blank" frameborder="0"></iframe><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a style="position: static; overflow: visible; float: none; display: inline;" target="_blank" href="https://maps.google.com/maps?ll=51.514622,-0.14492&amp;z=15&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps"><div style="width: 66px; height: 26px; cursor: pointer;"><img style="position: absolute; left: 0px; top: 0px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; width: 66px; height: 26px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google_white5_hdpi.png" draggable="false"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; position: absolute; top: 60px; width: 256px; height: 148px; left: 377px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2018 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000;"><img style="position: absolute; left: -2px; top: -336px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 59px; height: 492px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false"></div><img style="-moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; position: absolute; right: 0px; top: 0px; z-index: 10001; cursor: pointer; width: 37px; height: 37px;" alt="" src="https://maps.gstatic.com/mapfiles/transparent.png" draggable="false"></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; width: 141px; right: 84px; bottom: 0px;"><div draggable="false" style="-moz-user-select: none; height: 14px; line-height: 14px;" class="gm-style-cc"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2018 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2018 Google</div></div><div class="gmnoprint gm-style-cc" style="z-index: 1000001; -moz-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;" draggable="false"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);" href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank">Terms of Use</a></div></div><button style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; padding: 0px; -moz-user-select: none; cursor: pointer; width: 25px; height: 25px; overflow: hidden; position: absolute; margin: 10px 14px; top: 0px; right: 0px;" draggable="false" title="Toggle fullscreen view" aria-label="Toggle fullscreen view" type="button"><img style="position: absolute; top: -86px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; left: -52px; width: 164px; height: 175px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png" draggable="false" class="gm-fullscreen-control"></button><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" style="margin: 10px; -moz-user-select: none; position: absolute; bottom: 107px; right: 28px;" draggable="false" controlwidth="28" controlheight="93"><div class="gmnoprint" style="position: absolute; left: 0px; top: 38px;" controlwidth="28" controlheight="55"><div draggable="false" style="-moz-user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;"><button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; border: 0px none; margin: 0px; padding: 0px; position: relative; cursor: pointer; -moz-user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;" draggable="false" title="Zoom in" aria-label="Zoom in" type="button"><div style="overflow: hidden; position: absolute; left: 7px; top: 6px; width: 15px; height: 15px;"><img style="position: absolute; left: 0px; top: 0px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl_hdpi.png" draggable="false"></div></button><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div><button style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; border: 0px none; margin: 0px; padding: 0px; position: relative; cursor: pointer; -moz-user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;" draggable="false" title="Zoom out" aria-label="Zoom out" type="button"><div style="overflow: hidden; position: absolute; left: 7px; top: 6px; width: 15px; height: 15px;"><img style="position: absolute; left: 0px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; top: -15px; width: 120px; height: 54px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl_hdpi.png" draggable="false"></div></button></div></div><div class="gm-svpc" style="background-color: rgb(255, 255, 255); cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; position: absolute; left: 0px; top: 0px;" controlwidth="28" controlheight="28"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;" aria-label="Street View Pegman Control"><img style="position: absolute; left: -147px; top: -26px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 215px; height: 835px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5_hdpi.png" draggable="false"></div><div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;" aria-label="Pegman is on top of the Map"><img style="position: absolute; left: -147px; top: -52px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 215px; height: 835px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5_hdpi.png" draggable="false"></div><div style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;" aria-label="Street View Pegman Control"><img style="position: absolute; left: -147px; top: -78px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 215px; height: 835px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5_hdpi.png" draggable="false"></div></div></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" style="margin: 10px; -moz-user-select: none; position: absolute; display: none; bottom: 26px; left: 0px;" draggable="false" controlwidth="0" controlheight="0"><div class="gmnoprint" controlwidth="28" controlheight="0" style="position: absolute; display: none;"><div style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; display: none;" title="Rotate map 90 degrees"><img style="position: absolute; left: -141px; top: 6px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 170px; height: 54px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4_hdpi.png" draggable="false"></div><div style="overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; width: 28px; height: 28px; top: 0px;" class="gm-tilt"><img style="position: absolute; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; left: -141px; top: -13px; width: 170px; height: 54px;" alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4_hdpi.png" draggable="false"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div style="float: left; position: relative;" class="gm-style-mtc"><div role="button" tabindex="0" title="Show street map" aria-label="Show street map" aria-pressed="true" style="direction: ltr; overflow: hidden; text-align: center; position: relative; font-family: Roboto, Arial, sans-serif; -moz-user-select: none; font-size: 11px; padding: 11px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 25px; color: rgb(0, 0, 0); font-weight: 500; background-color: rgb(255, 255, 255);" draggable="false">Map</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; left: 0px; top: 36px; text-align: left; display: none;"><div style="font-family: Roboto, Arial, sans-serif; -moz-user-select: none; font-size: 11px; padding: 8px; direction: ltr; text-align: left; background-color: rgb(255, 255, 255); white-space: nowrap; color: rgb(0, 0, 0);" draggable="false" title="Show street map with terrain"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;" alt="" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div style="float: left; position: relative;" class="gm-style-mtc"><div role="button" tabindex="0" title="Show satellite imagery" aria-label="Show satellite imagery" aria-pressed="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; font-family: Roboto, Arial, sans-serif; -moz-user-select: none; font-size: 11px; padding: 11px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 58px; color: rgb(86, 86, 86); border-left: 0px none; background-color: rgb(255, 255, 255);" draggable="false">Satellite</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; right: 0px; top: 36px; text-align: left; display: none;"><div style="font-family: Roboto, Arial, sans-serif; -moz-user-select: none; font-size: 11px; padding: 8px; direction: ltr; text-align: left; background-color: rgb(255, 255, 255); white-space: nowrap; color: rgb(0, 0, 0);" draggable="false" title="Show imagery with street names"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img style="position: absolute; left: -52px; top: -44px; -moz-user-select: none; border: 0px none; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;" alt="" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div></div>
         </div>
     </div>
-    <div class="footer-middle">
-        <div class="container">
-            <div class="row">
-                <div class="column my-account col-sm-3 col-md-3">
-                    <div class="title">
-                        <strong>@T("Footer.MyAccount")</strong>
-                    </div>
-                    <ul class="nav nav-list">
-                        <li><a href="@Url.RouteUrl("CustomerInfo")"><i class="fa fa-angle-double-right"></i>@T("Account.MyAccount")</a></li>
-                        <li><a href="@Url.RouteUrl("CustomerOrders")"><i class="fa fa-angle-double-right"></i>@T("Account.CustomerOrders")</a></li>
-                        <li><a href="@Url.RouteUrl("CustomerAddresses")"><i class="fa fa-angle-double-right"></i>@T("Account.CustomerAddresses")</a></li>
-                        @if (Model.ShoppingCartEnabled)
-                        {
-                            <li><a href="@Url.RouteUrl("ShoppingCart")"><i class="fa fa-angle-double-right"></i>@T("ShoppingCart")</a></li>
-                        }
-                        @if (Model.WishlistEnabled)
-                        {
-                            <li><a href="@Url.RouteUrl("Wishlist")"><i class="fa fa-angle-double-right"></i>@T("Wishlist")</a></li>
-                        }
-                        @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn3).ToList())
-                        {
-                            <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })"><i class="fa fa-angle-double-right"></i>@topic.Name</a></li>
-                        }
-                    </ul>
-                </div>
-                <div class="column customer-service col-sm-3 col-md-3">
-                    <div class="title">
-                        <strong>@T("Footer.CustomerService")</strong>
-                    </div>
-                    <ul class="nav nav-list">
-                        @if (Model.NewsEnabled)
-                        {
-                                <li><a href="@Url.RouteUrl("NewsArchive")"><i class="fa fa-angle-double-right"></i>@T("News")</a></li>
-                        }
-                        @if (Model.BlogEnabled)
-                        {
-                                <li><a href="@Url.RouteUrl("Blog")"><i class="fa fa-angle-double-right"></i>@T("Blog")</a></li>
-                        }
-                        @if (Model.ForumEnabled)
-                        {
-                                <li><a href="@Url.RouteUrl("Boards")"><i class="fa fa-angle-double-right"></i>@T("Forum.Forums")</a></li>
-                        }
-                        @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn2).ToList())
-	                    {
-                                <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })"><i class="fa fa-angle-double-right"></i>@topic.Name</a></li>
-                        }
-                        @if (Model.SitemapEnabled)
-                        {
-                            <li><a href="@Url.RouteUrl("Sitemap")"><i class="fa fa-angle-double-right"></i>@T("Sitemap")</a></li>
-                        }
-                        <li><a href="@Url.RouteUrl("ContactUs")"><i class="fa fa-angle-double-right"></i>@T("ContactUs")</a></li>
-                    </ul>
-                </div>
-                <div class="column information col-sm-3 col-md-3">
-                    <div class="title">
-                        <strong>@T("Footer.Information")</strong>
-                    </div>
-                    <ul class="nav nav-list">
-                        @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn1).ToList())
-                        {
-                            <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })"><i class="fa fa-angle-double-right"></i>@topic.Name</a></li>
-                        }
-                        @if (Model.AllowCustomersToApplyForVendorAccount)
-                        {
-                            <li><a href="@Url.RouteUrl("ApplyVendorAccount")"><i class="fa fa-angle-double-right"></i>@T("Vendors.ApplyAccount")</a></li>
-                        }
-                    </ul>
-                </div>
-                <div class="column contact-wrapper col-sm-3 col-md-3">
-                    <div class="title">
-                        <strong>Our Offers</strong>
-                    </div>
-                   <ul class="nav nav-list">
-                       <li><a href="@Url.RouteUrl("ProductSearch")"><i class="fa fa-angle-double-right"></i>@T("Search")</a> </li>
-                       @if (Model.RecentlyViewedProductsEnabled)
-                       {
-                           <li><a href="@Url.RouteUrl("RecentlyViewedProducts")"><i class="fa fa-angle-double-right"></i>@T("Products.RecentlyViewedProducts")</a></li>
-                       }
-                       @if (Model.CompareProductsEnabled)
-                       {
-                           <li><a href="@Url.RouteUrl("CompareProducts")"><i class="fa fa-angle-double-right"></i>@T("Products.Compare.List")</a></li>
-                       }
-                       @if (Model.NewProductsEnabled)
-                       {
-                           <li><a href="@Url.RouteUrl("NewProducts")"><i class="fa fa-angle-double-right"></i>@T("Products.NewProducts")</a></li>
-                       }
-                   </ul>
-                </div>
+    <div class="footer-upper">
+        <div class="footer-block find-us">
+            <div class="title">
+                <strong>Find Us</strong>
             </div>
+            <ul class="list footer-collapse">
+                <li class="address">
+                    <span>21 Yellow Str. London, Sussex</span>
+                </li>
+                <li class="e-mail">
+                    <span>ourshop_uk@gmail.com</span>
+                </li>
+                <li class="mobile-phone">
+                    <span>+123 456 789</span>
+                </li>
+                <li class="phone">
+                    <span>+123 456 789</span>
+                </li>
+            </ul>
         </div>
+        <div class="footer-block information">
+            <div class="title">
+                <strong>Information</strong>
+            </div>
+            <ul class="list footer-collapse">
+                <li>
+                    <a>Contact us</a>
+                </li>
+                <li>
+                    <a>Shipping & returns</a>
+                </li>
+                <li>
+                    <a>Privacy notice</a>
+                </li>
+                <li>
+                    <a>Conditions of Use</a>
+                </li>
+                <li>
+                    <a>About us</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-block my-account">
+            <div class="title">
+                <strong>My Account</strong>
+            </div>
+            <ul class="list footer-collapse">
+                <li>
+                    <a>Orders</a>
+                </li>
+                <li>
+                    <a>Addresses</a>
+                </li>
+                <li>
+                    <a>Recently viewed products</a>
+                </li>
+                <li>
+                    <a>Sitemap</a>
+                </li>
+                <li>
+                    <a>Apply for vendor account</a>
+                </li>
+            </ul>
+        </div>
+        @await Component.InvokeAsync("NewsletterBox")
+    </div>
+
+    <div class="footer-middle">
+        @await Component.InvokeAsync("SocialButtons")
     </div>
     <div class="footer-lower">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <div class="footer-information">
-                        @if (Model.DisplayTaxShippingInfoFooter)
-                        {
-                            var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
-                            <span class="footer-tax-shipping">
-                                @T(inclTax ? "Footer.TaxShipping.InclTax" : "Footer.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
-                            </span>
-                        }
-                    </div>
-                    @if (!Model.HidePoweredByNopCommerce)
-                    {
-                        <div class="poweredby">
-                            @*Would you like to remove the "Powered by nopCommerce" link in the bottom of the footer?
-                            Please find more info at https://www.nopcommerce.com/copyrightremoval.aspx*@
-                            Powered by <a href="https://www.nopcommerce.com/">nopCommerce</a>
-                        </div>
-                    }
-                    <div class="payment-method">
-                        <ul>
-                            <li class="payment-method1"></li>
-                            <li class="payment-method2"></li>
-                            <li class="payment-method3"></li>
-                            <li class="payment-method4"></li>
-                            <li class="payment-method5"></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 footer-store-theme">
-                    <div class="footer-disclaimer">
-                        @T("Content.CopyrightNotice", DateTime.Now.Year.ToString(), Model.StoreName)
-                    </div>
-                    @await Component.InvokeAsync("StoreThemeSelector")
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <div class="designedby pull-right">
-                        <div class="footer-theme-credit"><a href="http://themes.nopaccelerate.com/themes/nopaccelerate-simplex-theme-3/" target="_blank" title="Responsive Noble Theme for nopCommerce">nopAccelerate Simplex Theme</a></div>
-                        <div class="footer-designedby">Theme by <a target="_blank" href="http://www.nopaccelerate.com/">nopAccelerate</a></div>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-disclaimer">
+            Copyright © 2018 Nop Venture Theme. All rights reserved.
+        </div>
+        <div class="footer-powered-by">
+            Powered by <a href="http://www.nopcommerce.com/">nopCommerce</a>
+        </div>
+        <div class="footer-designed-by">
+            Designed by <a href="http://www.nop-templates.com/" target="_blank">Nop-Templates.com</a>
         </div>
     </div>
     @await Component.InvokeAsync("Widget", new { widgetZone = "footer" })

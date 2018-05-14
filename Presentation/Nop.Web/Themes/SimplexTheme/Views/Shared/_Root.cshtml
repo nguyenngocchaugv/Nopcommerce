@@ -47,7 +47,7 @@
         </div>
         @await Component.InvokeAsync("Footer")
         @* Use this content for back to top page scrolling *@
-        <div id="backTop"></div>
+        <div class="scroll-back-button" id="backTop" style="display: block;"></div>
 </div>
 @await Component.InvokeAsync("EuCookieLaw")
 @await Component.InvokeAsync("Widget", new { widgetZone = "body_end_html_tag_before" })
