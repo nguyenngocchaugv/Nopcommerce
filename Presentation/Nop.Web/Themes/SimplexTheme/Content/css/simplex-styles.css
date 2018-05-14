@@ -858,7 +858,10 @@ display: block;
     text-overflow: ellipsis;
     color: #fff;
     font-size: 18px;
-    padding: 9px;
+}
+
+.footer-block .title strong {
+    padding: 14px 9px 14px 9px;
 }
 
 .footer-map-holder .title strong {
@@ -868,6 +871,16 @@ display: block;
 .footer-block .footer-collapse /*,
 .footer-map-wrapper*/ {
     display: block;
+}
+
+.footer-map-hide {
+    height: 0px;
+    transition: height 0.5s linear;
+}
+
+.footer-map-show {
+    height: 300px;
+    transition: height 0.5s linear;
 }
 
 .footer-block .newsletter .title {
@@ -888,7 +901,7 @@ display: block;
 
 .footer-block.find-us span {
     display: inline-block;
-    padding: 9px 9px 9px 18px;
+    padding: 9px 9px 9px 25px;
     position: relative;
 }
 
@@ -955,7 +968,6 @@ display: block;
 
 .newsletter-subscribe-text {
     line-height: 25px;
-    padding-left: 9px;
     max-width: 90%;
     text-transform: none;
     font-family: 'Lato', sans-serif; !important;
@@ -1198,8 +1210,8 @@ display: block;
 }
 
 .footer-upper {
-    padding: 60px 0px 0;
-    margin: 0 auto;
+    padding: 70px 0px 0;
+    margin: 0px auto;
     max-width: 1200px;
     overflow: hidden;
     text-align: left;
@@ -1242,8 +1254,14 @@ display: block;
 }
 
 .footer-block.find-us .list,
-.footer-block.newsetter .footer-collapse {
-    padding: 4px 10px;
+.footer-block .footer-collapse {
+    padding: 4px 0px;
+}
+.footer-block.newsletter .footer-collapse {
+    padding: 4px 10px; !important
+}
+.footer-block.find-us .footer-collapse {
+    padding: 4px 10px; !important
 }
 
 .newsletter-subscribe-text {
