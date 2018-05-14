@@ -957,28 +957,20 @@ display: block;
     left: 0;
 }
 
-.footer-block.find-us .e-mail span {
-    padding-left: 21px;
+.footer-block.find-us .e-mail span:before {
+    content: "j";
+    top: 13px;
 }
-
-    .footer-block.find-us .e-mail span:before {
-        content: "j";
-        top: 13px;
-    }
 
 .footer-block.find-us .mobile-phone span:before {
     content: "K";
     top: 12px;
 }
 
-.footer-block.find-us .phone span {
-    padding-left: 20px;
+.footer-block.find-us .phone span:before {
+    content: "L";
+    top: 11px;
 }
-
-    .footer-block.find-us .phone span:before {
-        content: "L";
-        top: 11px;
-    }
 
 .footer-block a {
     display: block;
