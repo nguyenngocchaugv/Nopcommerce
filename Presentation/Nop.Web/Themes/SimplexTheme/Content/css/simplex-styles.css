@@ -559,10 +559,98 @@ strong {
     overflow: hidden;
     position: relative;
 }
-.spc-categories .product-grid.active {
+.spc-categories .product-grid.most-wanted {
     display: block;
 }
-
+.spc-categories .product-grid.active {
+display: block;
+}
+.spc-categories .item-grid {
+    margin: -1px -1px 0;
+}
+.spc-categories .item-box {
+    width: calc(50% + 1px);
+    margin: -1px 0 0 -1px;
+    border: 1px solid #e5e5e5;
+    clear: none;
+}
+.item-box {
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 0 0 3.75%;
+}
+.spc-categories .product-item {
+    box-shadow: none;
+    outline: none !important;
+    padding: 0 0 80px;
+}
+.item-box .product-item:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 0 14px rgba(0,0,0,0.06);
+    z-index: -1;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.item-box .picture {
+    z-index: 1;
+    overflow: hidden;
+}
+.item-box .picture a {
+    display: block;
+    position: relative;
+}
+.item-box .picture a:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.item-box .picture img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    margin: auto;
+}
+.spc-categories .item-box .details {
+    padding: 20px;
+}
+.spc-categories .item-box .product-title {
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.item-box .product-title {
+    max-height: 38px;
+    overflow: hidden;
+    display: block;
+    font-size: 17px;
+    line-height: 19px;
+    margin: 0 0 5px;
+}
+.item-box .prices {
+    overflow: hidden;
+}
+.item-box .prices .box-prices-wrapper {
+    max-height: 20px;
+    overflow: hidden;
+    font-size: 0;
+}
+.item-box .prices .box-prices-wrapper span {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
 /* FLYOUT CART STYLE */
 .flyout-main-wrapper .flyout-cart-wrapper {
     position: absolute;

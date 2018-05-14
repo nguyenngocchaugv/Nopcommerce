@@ -36,22 +36,22 @@
                     <div class="spc-categories-right">
                         <div class="navigation-wrapper">
                             <ul class="navigation">
-                                <li class="tab"><span>Most Wanted</span></li>
-                                <li class="tab"><span>Best Sellers</span></li>
-                                <li class="tab"><span>New Products</span></li>
+                                <li class="tab active"><span value="0">Most Wanted</span></li>
+                                <li class="tab"><span value="1">Best Sellers</span></li>
+                                <li class="tab"><span value="2">New Products</span></li>
                             </ul>
                         </div>
                         <div class="category-products">
-                            <div class="product-grid"></div>
-                            <div class="product-grid">@await Component.InvokeAsync("HomepageBestSellers")</div>
-                            <div class="product-grid"></div>
+                            <div class="product-grid most-wanted">This is Most Wanted</div>
+                            <div class="product-grid best-sellers">This is Best Sellers@*@await Component.InvokeAsync("HomepageBestSellers")*@</div>
+                            <div class="product-grid new-products">This is New Products</div>
                         </div>
                     </div>
                 </div>
             </div>
         }
     }
-
+            
 
 
     @*<div class="category-grid home-page-category-grid">
@@ -100,3 +100,26 @@
         </div>
     </div>*@
 }
+<script type="text/javascript" asp-location="Footer">
+    $(document).ready(function () {
+        $(".navigation .tab span").click(
+            function () {
+                $(this).parents('.navigation').find('.tab').removeClass('active');
+                $(this).parent('.navigation .tab').addClass('active');
+                var tabID = $(this).attr('value');
+                $(this).parents('.spc-categories-right').find('.product-grid').css('display', 'none');
+                switch (tabID) { 
+                    case '0':
+                        $(this).parents('.spc-categories-right').find('.most-wanted').css('display', 'block');
+                        break;
+                    case '1':
+                        $(this).parents('.spc-categories-right').find('.best-sellers').css('display', 'block');
+                        break;
+                    case '2':
+                        $(this).parents('.spc-categories-right').find('.new-products').css('display', 'block');
+                        break;
+                }
+            }
+        );
+    });
+</script>

@@ -561,6 +561,11 @@
     .spc .navigation li.active span {
         color: #2c2c2c;
     }
+    .spc-categories .navigation li.active span:before {
+        left: 2px;
+        right: 2px;
+        bottom: 0;
+    }
     .spc-categories .navigation li span {
         letter-spacing: 4px;
         padding: 10px 20px 12px 20px;
@@ -599,6 +604,16 @@
         left: 25%;
         right: 0;
         bottom: 0;
+    }
+    .item-box {
+        width: 23.5%;
+        margin: 0 0 2% 2%;
+    }
+    .spc-categories .product-item {
+        padding: 0 0 32.333%;
+    }
+    .spc-categories .item-box .details {
+        padding: 7.5%;
     }
 
 }
