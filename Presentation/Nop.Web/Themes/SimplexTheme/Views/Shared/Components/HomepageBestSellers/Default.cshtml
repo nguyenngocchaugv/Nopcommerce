@@ -2,23 +2,21 @@
 @if (Model.Count > 0)
 {
     <div class="item-grid">
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
             <div class="item-box">
                 <div class="product-item sevenspikes-ajaxcart">
-                    <div class="ribbon-wrapper">
-                        <div class="picture">
-                            <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl"/></a>
-                        </div>
+                    <div class="picture">
+                        <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" /></a>
                     </div>
                     <div class="details">
                         <h2 class="product-title">
-                            <a href="#"></a>
+                            <a href="#">@item.Name</a>
                         </h2>
                         <div class="add-info">
                             <div class="prices">
-                                <div class="box-price-wrapper">
-                                    <span class="price actual-price"></span>
+                                <div class="box-prices-wrapper">
+                                    <span class="price actual-price">@item.ProductPrice.Price</span>
                                 </div>
                             </div>
                         </div>
@@ -28,32 +26,32 @@
         }
     </div>
     @*<div class="product-grid bestsellers">
-        <div class="title sub-title">
-            <strong>@T("Bestsellers")</strong>
-        </div>
-        <div class="row">
-            @if (Model.Count <= 4)
-            {
-                foreach (var item in Model)
+            <div class="title sub-title">
+                <strong>@T("Bestsellers")</strong>
+            </div>
+            <div class="row">
+                @if (Model.Count <= 4)
                 {
-                    <div class="item-box product-grid col-xs-12 col-sm-4 col-md-3 product-align clearfix">
-                        <div class="thumbnail">
-                            @await Html.PartialAsync("_ProductBox", item)
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <div id="home-bestseller-slider" class="home-bestseller-slider">
-                    @foreach (var item in Model)
+                    foreach (var item in Model)
                     {
-                        <div class="item-box product-grid col-xs-12 col-sm-12 col-md-12 product-align clearfix">
-                            <div class="thumbnail">@await Html.PartialAsync("_ProductBox", item)</div>
+                        <div class="item-box product-grid col-xs-12 col-sm-4 col-md-3 product-align clearfix">
+                            <div class="thumbnail">
+                                @await Html.PartialAsync("_ProductBox", item)
+                            </div>
                         </div>
                     }
-                </div>
-            }
-        </div>
-    </div>*@
+                }
+                else
+                {
+                    <div id="home-bestseller-slider" class="home-bestseller-slider">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item-box product-grid col-xs-12 col-sm-12 col-md-12 product-align clearfix">
+                                <div class="thumbnail">@await Html.PartialAsync("_ProductBox", item)</div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>*@
 }

@@ -598,12 +598,8 @@
         right: 0;
         bottom: 0;
     }
-    .spc-categories .category-products {
-        position: absolute;
-        top: 0;
-        left: 25%;
-        right: 0;
-        bottom: 0;
+    .spc-categories .product-grid {
+        min-height: 391px;
     }
     .item-box {
         width: 23.5%;
@@ -614,6 +610,25 @@
     }
     .spc-categories .item-box .details {
         padding: 7.5%;
+    }
+    .spc-categories .item-box:nth-child(3n+1) {
+        clear: both;
+    }
+    .spc-categories .item-box .details {
+        padding: 6%;
+    }
+    .spc-categories .item-box .product-title {
+        font-size: 14px;
+        margin: 0 0 3px;
+        line-height: 1.2em;
+    }
+    .spc-categories .item-box .product-title {
+        font-size: 14px;
+        margin: 0 0 3px;
+        line-height: 1.2em;
+    }
+    .item-box .prices .box-prices-wrapper span {
+        font-size: 13px;
     }
 
 }
