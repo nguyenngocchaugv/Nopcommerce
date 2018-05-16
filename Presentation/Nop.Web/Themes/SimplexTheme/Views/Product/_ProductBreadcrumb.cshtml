@@ -6,13 +6,13 @@
 }
 @if (Model.Enabled)
 {
-<div class="breadcrumb-wrapper">
-    <ol class="breadcrumb">
+<div class="breadcrumb">
+    <ul>
         @await Component.InvokeAsync("Widget", new { widgetZone = "productbreadcrumb_before", additionalData = Model.ProductId })
         <li>
             <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
                 <a href="@Url.RouteUrl("HomePage")" itemprop="url">
-                    <span itemprop="title"><span class="products-breadcrumb-link">@T("Products.Breadcrumb.Top")</span><i class="fa fa-home"></i></span>
+                    <span itemprop="title"><span class="products-breadcrumb-link">@T("Products.Breadcrumb.Top")</span><span class="delimiter">/</span></span>
                 </a>
             </span>
             @*<span class="divider">@breadcrumbDelimiter</span>*@
@@ -22,7 +22,7 @@
             <li>
                 <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
                     <a href="@Url.RouteUrl("Category", new { SeName = category.SeName })" itemprop="url">
-                        <span itemprop="title">@category.Name</span>
+                        <span itemprop="title">@category.Name<span class="delimiter">/</span></span>
                     </a>
                 </span>
                 @*<span class="divider">@breadcrumbDelimiter</span>*@
@@ -33,6 +33,6 @@
             @*<strong class="current-item"><a href="@Url.RouteUrl("Product", new { SeName = Model.ProductSeName })" itemprop="url">@Model.ProductName</a></strong>*@
             @await Component.InvokeAsync("Widget", new { widgetZone = "productbreadcrumb_after", additionalData = Model.ProductId })
         </li>
-    </ol>
+    </ul>
 </div>
 } 
