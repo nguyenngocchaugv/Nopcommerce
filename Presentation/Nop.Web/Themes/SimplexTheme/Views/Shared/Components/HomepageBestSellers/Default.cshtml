@@ -6,9 +6,27 @@
         {
             <div class="item-box">
                 <div class="product-item sevenspikes-ajaxcart">
-                    <div class="picture">
-                        <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" /></a>
-                    </div>
+                    @if (item.MarkAsNew)
+                    {
+                        <div class="ribbon-wrapper">
+                            <div class="picture">
+                                <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" alt="@item.ShortDescription" title="@item.DefaultPictureModel.Title" /></a>
+                            </div>
+                            <a href="#" class="ribbon-position top-right">
+                                <div class="product-ribbon">
+                                    <label class="ribbon-text">New</label>
+                                </div>
+                            </a>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="picture">
+                            <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" alt="@item.ShortDescription" title="@item.DefaultPictureModel.Title" /></a>
+                        </div>
+
+                    }
                     <div class="details">
                         <h2 class="product-title">
                             <a href="#">@item.Name</a>

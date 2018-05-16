@@ -675,6 +675,60 @@ display: block;
     display: inline-block;
     vertical-align: middle;
 }
+
+/* RIBBONs */
+.ribbon-wrapper {
+    position: relative;
+}
+.ribbon-position.top-right {
+    top: 0;
+    right: 0;
+}
+.ribbon-position {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    z-index: 1;
+    -webkit-transition: all .15s ease-in-out;
+    -moz-transition: all .15s ease-in-out;
+    -o-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+}
+.spc-categories .item-box .product-ribbon {
+    right: -1px !important;
+}
+.product-ribbon {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: 15px;
+    right: -5px;
+    padding: 6px 20px 6px 26px;
+    overflow: hidden;
+}
+.item-box .product-ribbon:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 6px;
+    right: -6px;
+    bottom: 0;
+    background: #f3cc2e;
+    z-index: 1;
+    -o-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+.ribbon-text {
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+    line-height: normal;
+}
     
 /* FLYOUT CART STYLE */
 .flyout-main-wrapper .flyout-cart-wrapper {
