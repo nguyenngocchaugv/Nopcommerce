@@ -27,7 +27,15 @@
                 @await Component.InvokeAsync("TopMenu")
             </div>
         </div>
-        <div class="header-right"></div>
+        <div class="header-right">
+            <div class="search-box store-search-box">
+                @await Component.InvokeAsync("SearchBox")
+            </div>
+            <div class="header-links"></div>
+            <div class="cart-wrapper">
+                @await Component.InvokeAsync("FlyoutShoppingCart")
+            </div>
+        </div>
     </div>
 </div>
 @*@await Component.InvokeAsync("Widget", new { widgetZone = "header_middle" })*@

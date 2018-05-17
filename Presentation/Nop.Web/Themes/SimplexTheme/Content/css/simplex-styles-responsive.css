@@ -333,6 +333,164 @@
         display: block;
     }
 
+    .header-right {
+        width: 286px;
+        height: 75px;
+        padding: 0 0 0 89px;
+        position: relative;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+    .store-search-box {
+        position: absolute;
+        top: 0;
+        right: 235px;
+        bottom: 0;
+        min-width: 51px;
+        height: 75px;
+        background: #fff;
+        padding: 0 51px 0 0;
+        z-index: 1;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .store-search-box form {
+        width: 0;
+        overflow: hidden;
+        height: 75px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+    }
+    .store-search-box form {
+        display: block;
+        position: relative;
+    }
+    .store-search-box .search-box-button {
+        width: 51px;
+        height: 75px;
+        background: url(../img/search-button.svg) no-repeat center;
+    }
+    .store-search-box .search-opener {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 51px;
+        height: 75px;
+        font-size: 0;
+        cursor: pointer;
+        background: url(../img/search-button.svg) no-repeat center;
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+    }
+    .cart-wrapper {
+        position: relative;
+        z-index: 2;
+    }
+    #topcartlink {
+        height: 75px;
+        text-align: center;
+        background: #f3cc2e;
+    }
+    #topcartlink a {
+        color: #323232;
+        padding: 20px 5px 15px;
+    }
+    #topcartlink a, #topcartlink span {
+        display: block;
+        color: #323232;
+        line-height: 19px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .cart-wrapper .cart-qty, .cart-wrapper .cart-qty-number {
+        display: inline-block !important;
+        vertical-align: middle;
+    }
+    #topcartlink .cart-total {
+        opacity: .6;
+    }
+    .flyout-cart {
+        display: block !important;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 100;
+        width: 450px;
+        box-shadow: 0 0 25px rgba(0,0,0,0.15);
+        background: #fff;
+        -webkit-transform: translate(100%);
+        -ms-transform: translate(100%);
+        transform: translate(100%);
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+    }
+    .cart-wrapper.active .flyout-cart {
+        display: block;
+        -webkit-transform: translate(0);
+        -ms-transform: translate(0);
+        transform: translate(0);
+    }
+    .mini-shopping-cart .count {
+        padding: 15px;
+        font-size: 14px;
+        background: #f2f2f2;
+        text-align: center;
+        color: #a3a3a3;
+    }
+    .mini-shopping-cart * {
+        line-height: normal !important;
+    }
+    .mini-shopping-cart .count a:hover {
+        text-decoration: underline;
+        color: #a3a3a3;
+    }
+    .mini-shopping-cart .items {
+        padding: 10px 0 18px;
+        max-height: calc(100vh - 349px);
+        overflow-y: auto;
+    }
+    .mini-shopping-cart .item.first {
+        border: none;
+    }
+    .mini-shopping-cart .item {
+        border-top: 1px solid #f0f0f0;
+        overflow: hidden;
+        padding: 20px 30px 12px;
+        position: relative;
+    }
+    .mini-shopping-cart .picture {
+        float: left;
+        width: 100px;
+        text-align: center;
+        box-shadow: 0px 0px 20px rgba(44,44,44,.1);
+    }
+    .mini-shopping-cart .picture a {
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+    .mini-shopping-cart .picture a:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+    .mini-shopping-cart .picture img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        max-width: 100%;
+    }
+    .mini-shopping-cart .picture + .product {
+        margin: 0 0 0 120px;
+    }
+
     .video-button-title {
         font-size: 41px;
         letter-spacing: 4px;
