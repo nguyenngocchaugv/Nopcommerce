@@ -679,6 +679,67 @@
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
+
+    .rich-blog-homepage {
+        width: 1200px;
+        max-width: none;
+    }
+
+        .rich-blog-homepage .blog-posts {
+            overflow: hidden;
+        }
+
+        .rich-blog-homepage .blog-post {
+            margin: 0 0 23px 20px;
+            float: left;
+        }
+
+            .rich-blog-homepage .blog-post:nth-child(2n+1) {
+                margin-left: 0;
+                clear: both;
+            }
+
+        .rich-blog-homepage .view-all a {
+            max-width: none;
+            letter-spacing: 2px;
+        }
+
+            .rich-blog-homepage .view-all a:hover {
+                background: #d5d5d5;
+            }
+
+    .blog-search-box form {
+        display: block;
+        padding: 20px 50px 20px 0;
+    }
+
+    .blog-search-box .search-box-button {
+        top: 20px;
+        bottom: 20px;
+    }
+
+    .blog-instant-search {
+        top: 70px !important;
+        left: 0 !important;
+        width: calc(100% - 15px) !important;
+    }
+
+    .blogpost-page .rich-blog-image {
+        padding: 0 68px;
+    }
+
+    .blogpost-page .post-footer {
+        padding: 0 68px 50px;
+    }
+
+    .post-navigation .prev {
+        left: 68px;
+    }
+
+    .blogpost-page .page-title {
+        padding-left: 118px;
+        padding-right: 118px;
+    }
 }
 @media (min-width:992px) and (max-width:1199px){
     .lt-1024 body .responsive {display: none;}
