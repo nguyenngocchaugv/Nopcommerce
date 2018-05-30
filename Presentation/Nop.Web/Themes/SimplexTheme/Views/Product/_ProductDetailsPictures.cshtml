@@ -2,21 +2,30 @@
 @{
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/magnific-popup/jquery.magnific-popup.min.js");
     Html.AddCssFileParts("~/lib/magnific-popup/magnific-popup.css");
+    var i = 0;
 }
 <div class="gallery sevenspikes-cloudzoom-gallery">
     <div class="picture-wrapper">
-        @if (Model.DefaultPictureZoomEnabled)
+        @if (!Model.DefaultPictureZoomEnabled)
         {
-            <div class="picture" data-zoom-window-width="244" data-zoom-window-height="257">
-                <a href="@Model.DefaultPictureModel.FullSizeImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-lightbox-anchor-@Model.Id">
-                    <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" id="main-product-img-@Model.Id" />
-                </a>
-            </div>
-             <script type="text/javascript" asp-location="Footer">
+        <div class="picture" id="sevenspikes-cloud-zoom" data-zoomwindowelementid="" data-selectoroftheparentelementofthecloudzoomwindow="" data-defaultimagecontainerselector=".product-essential .gallery" data-zoom-window-width="244" data-zoom-window-height="257">
+            <a href="@Model.DefaultPictureModel.FullSizeImageUrl" data-full-image-url="@Model.DefaultPictureModel.FullSizeImageUrl" class="picture-link" id="zoom1">
+                <img src="@Model.DefaultPictureModel.FullSizeImageUrl" class="cloudzoom" id="cloudZoomImage" itemprop="image" data-cloudzoom="appendSelector: '.picture-wrapper', zoomPosition: 'inside', zoomOffsetX: 0, captionPosition: 'bottom', tintOpacity: 0, zoomWidth: 244, zoomHeight: 257, easing: 3, touchStartDelay: true, zoomFlyOut: false, disableZoom: 'false'" style="-moz-user-select: none;">
+            </a>
+        </div>
+        <script type="text/javascript" asp-location="Footer">
                 $(document).ready(function () {
-                    $('#main-product-img-lightbox-anchor-@Model.Id').magnificPopup(
-                    {
+                    var imgpath = '@Model.DefaultPictureModel.FullSizeImageUrl';
+
+                    var magdata = {
                         type: 'image',
+                        index: 0,
+                        items: [
+                            @foreach (var picture in Model.PictureModels)
+                            {
+                                @Html.Raw("{src: '" + picture.FullSizeImageUrl + "'},");
+                            }                            
+                        ],
                         removalDelay: 300,
                         gallery: {
                             enabled: true,
@@ -26,9 +35,22 @@
                         },
                         tClose: '@T("Media.MagnificPopup.Close")',
                         tLoading: '@T("Media.MagnificPopup.Loading")'
+                    }
+                    $('#zoom1').magnificPopup(magdata);
+
+                    $('.thumb-item img').on('click', function () {
+                        imgpath = $(this).attr('data-defaultsize');
+                        magdata.items.src = imgpath;
+                        magdata.index = Number($(this).attr('index'));
+
+                        $('#zoom1').magnificPopup(magdata);
+                        $('#cloudZoomImage').attr('src', imgpath);
+                        $('#zoom1').attr('data-full-image-url', imgpath);
+                        $('#CloudZoom').attr("href", imgpath);
+                        $('.cloudzoom, .cloud-zoom-gallery').CloudZoom();
                     });
                 });
-            </script>
+        </script>
         }
         else
         {
@@ -38,38 +60,14 @@
 
     @if (Model.PictureModels.Count > 1)
     {
-        if (Model.PictureModels.Count <= 3)
-        {
-            <div class="picture-thumbs">
-                @foreach (var picture in Model.PictureModels)
-                {
-                    <a class="thumb-item thumb-popup-link">
-                        <img src="@picture.ThumbImageUrl" alt="@picture.AlternateText" title="@picture.Title" data-defaultsize="@picture.ImageUrl" data-fullsize="@picture.FullSizeImageUrl" />
-                    </a>
-                }
-            </div>
-        }
-        else
-        {
-            <div class="picture-thumbs product-slider" id="product-slider">
-                @foreach (var picture in Model.PictureModels)
-                {
-                    <a class="thumb-item thumb-popup-link">
-                        <img class="owl-lazy" data-src="@picture.ThumbImageUrl" src="@picture.ThumbImageUrl" alt="@picture.AlternateText" title="@picture.Title" data-defaultsize="@picture.ImageUrl" data-fullsize="@picture.FullSizeImageUrl" />
-                    </a>
-                }
-            </div>
-        }
-        <script type="text/javascript" asp-location="Footer">
-            $(document).ready(function () {
-                $('.thumb-item img').on('click', function () {
-                    $('#main-product-img-@Model.Id').attr('src', $(this).attr('data-defaultsize'));
-                    $('#main-product-img-@Model.Id').attr('title', $(this).attr('title'));
-                    $('#main-product-img-@Model.Id').attr('alt', $(this).attr('alt'));
-                    $('#main-product-img-lightbox-anchor-@Model.Id').attr('href', $(this).attr('data-fullsize'));
-                    $('#main-product-img-lightbox-anchor-@Model.Id').attr('title', $(this).attr('title'));
-                });
-            });
-        </script>
+        <div class="picture-thumbs">
+            @foreach (var picture in Model.PictureModels)
+            {
+                <a class="thumb-item thumb-popup-link">
+                    <img index="@i" src="@picture.ThumbImageUrl" alt="@picture.AlternateText" title="@picture.Title" data-defaultsize="@picture.FullSizeImageUrl" data-fullsize="@picture.FullSizeImageUrl" />
+                </a>
+                i++;
+            }
+        </div>
     }
 </div>

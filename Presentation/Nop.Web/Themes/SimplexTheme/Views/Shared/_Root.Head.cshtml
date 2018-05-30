@@ -27,6 +27,8 @@
     //the issue that it's not possible in some cases (e.g. "Edit address", when Ajax request is made on one-page checkout)
     Html.AppendScriptParts(ResourceLocation.Head, "~/lib/jquery-1.10.2.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/head.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/cloudzoom.core.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/Themes/SimplexTheme/Content/js/CloudZoom.min.js");
 
     //X-UA-Compatible tag
     if (commonSettings.RenderXuaCompatible)

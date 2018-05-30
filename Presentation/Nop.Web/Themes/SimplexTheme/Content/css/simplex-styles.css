@@ -2828,6 +2828,28 @@ a.eu-cookie-privacyinfo-tag{color:#B80709 !important;text-decoration:underline;}
     display: block;
 }
 
+.sevenspikes-cloudzoom-gallery .picture {
+    width: 100%;
+}
+
+.cloudzoom-zoom-inside {
+    top: 0 !important;
+    right: 0;
+    left: 0 !important;
+    z-index: 1;
+    height: 100% !important;
+    margin: auto;
+    cursor: crosshair;
+}
+
+.cloudzoom-blank {
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAAA3NCSVQICAjb4U/gAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP/AOW3MEoAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDYvMzAvMTLNuPjnAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAAAxJREFUCJlj+M+AAgE/0Af5DM23uwAAAABJRU5ErkJggg==');
+}
+
 .gallery .picture-wrapper {
     position: relative;
 }
