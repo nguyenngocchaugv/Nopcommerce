@@ -31,10 +31,10 @@
             <div class="search-box store-search-box">
                 @await Component.InvokeAsync("SearchBox")
             </div>
-            <div class="header-links"></div>
-            <div class="cart-wrapper">
-                @await Component.InvokeAsync("FlyoutShoppingCart")
+            <div class="header-links">
+                @await Component.InvokeAsync("HeaderLinks")
             </div>
+                @await Component.InvokeAsync("FlyoutShoppingCart")
         </div>
     </div>
 </div>
@@ -58,5 +58,5 @@
         </div>
     </div>
 </div>*@
-@*@await Component.InvokeAsync("Widget", new { widgetZone = "header_after" })*@
+@await Component.InvokeAsync("Widget", new { widgetZone = "header_after" })
 

@@ -1,45 +1,79 @@
 ﻿@model HeaderLinksModel
 @using System.Text.Encodings.Web
-<div class="header-links header-top-right">
-    <ul>
-        @await Component.InvokeAsync("Widget", new { widgetZone = "header_links_before" })
-        @await Component.InvokeAsync("AdminHeaderLinks")
-        @if (Model.IsAuthenticated)
-        {
-            <li  class="my-account"><a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@*@Model.CustomerName*@</a></li>
-        }
-        else
-        {
-            <li class="register"><a href="@Url.RouteUrl("Register")" class="ico-register"><span>@T("Account.Register")</span></a></li>
-        }
-        @if (Model.WishlistEnabled)
-        {
-            <li class="my-wishlist">
+<div class="header-links-box">
+    @if (Model.IsAuthenticated)
+    {
+        <div class="header-links-box-top">
+            <div class="header-link-wrapper account">
+                <a href="@Url.RouteUrl("CustomerInfo")" title="@T("Account.MyAccount")" class="ico-account">@T("Account.MyAccount")</a>
+            </div>
+            <div class="header-link-wrapper logout">
+                <a href="@Url.RouteUrl("Logout")" title="@T("Account.Logout")" class="ico-logout">@T("Account.Logout")</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="header-links-box-top not-authenticated">
+            <div class="header-link-wrapper login">
+                <a href="@Url.RouteUrl("Login")" title="@T("Account.Login")" class="ico-login">@T("Account.Login")</a>
+            </div>
+            <div class="header-link-wrapper register">
+                <a href="@Url.RouteUrl("Register")" title="@T("Account.Register")" class="ico-register">@T("Account.Register")</a>
+            </div>
+        </div>
+    }
+
+    @if (Model.WishlistEnabled)
+    {
+        <div class="header-links-box-bottom">
+            <div class="header-link-wrapper">
                 <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
                     <span class="wishlist-label">@T("Wishlist")</span>
                     <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
                 </a>
-            </li>
-        }
-        @if (Model.AllowPrivateMessages)
-        {
-            <li>
-                <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
-                    <span class="inbox-label">@T("PrivateMessages.Inbox")</span>
-                    <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
-                </a>
-            </li>
-        }
-        @if (Model.IsAuthenticated)
-        {
-            <li class="logout"><a href="@Url.RouteUrl("Logout")" class="ico-logout"><span>@T("Account.Logout")</span></a></li>
-        }
-        else
-        {
-            <li class="login"><a href="@Url.RouteUrl("Login")" class="ico-login"><span>@T("Account.Login")</span></a></li>
-        }
-        @await Component.InvokeAsync("Widget", new { widgetZone = "header_links_after" })
-    </ul>
+            </div>
+        </div>
+    }
+    @*<ul>
+            @await Component.InvokeAsync("Widget", new { widgetZone = "header_links_before" })
+            @await Component.InvokeAsync("AdminHeaderLinks")
+            @if (Model.IsAuthenticated)
+            {
+                <li  class="my-account"><a href="@Url.RouteUrl("CustomerInfo")" class="ico-account">@T("Account.MyAccount")@Model.CustomerName</a></li>
+            }
+            else
+            {
+                <li class="register"><a href="@Url.RouteUrl("Register")" class="ico-register"><span>@T("Account.Register")</span></a></li>
+            }
+            @if (Model.WishlistEnabled)
+            {
+                <li class="my-wishlist">
+                    <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
+                        <span class="wishlist-label">@T("Wishlist")</span>
+                        <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
+                    </a>
+                </li>
+            }
+            @if (Model.AllowPrivateMessages)
+            {
+                <li>
+                    <a href="@Url.RouteUrl("PrivateMessages", new { tab = "" })" class="ico-inbox">
+                        <span class="inbox-label">@T("PrivateMessages.Inbox")</span>
+                        <span class="inbox-unread">@Model.UnreadPrivateMessages</span>
+                    </a>
+                </li>
+            }
+            @if (Model.IsAuthenticated)
+            {
+                <li class="logout"><a href="@Url.RouteUrl("Logout")" class="ico-logout"><span>@T("Account.Logout")</span></a></li>
+            }
+            else
+            {
+                <li class="login"><a href="@Url.RouteUrl("Login")" class="ico-login"><span>@T("Account.Login")</span></a></li>
+            }
+            @await Component.InvokeAsync("Widget", new { widgetZone = "header_links_after" })
+        </ul>*@
     @if (Model.AllowPrivateMessages && !string.IsNullOrEmpty(Model.AlertMessage))
     {
         //new private message notification

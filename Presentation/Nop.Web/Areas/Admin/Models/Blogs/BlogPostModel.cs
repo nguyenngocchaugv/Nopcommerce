@@ -42,6 +42,10 @@ namespace Nop.Web.Areas.Admin.Models.Blogs
         [NopResourceDisplayName("Admin.ContentManagement.Blog.BlogPosts.Fields.Tags")]
         public string Tags { get; set; }
 
+        [UIHint("Picture")]
+        [NopResourceDisplayName("Admin.ContentManagement.Blog.BlogPosts.Fields.Picture")]
+        public int PictureId { get; set; }
+
         public int ApprovedComments { get; set; }
         public int NotApprovedComments { get; set; }
 

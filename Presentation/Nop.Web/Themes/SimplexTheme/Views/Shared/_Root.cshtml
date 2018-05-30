@@ -4,16 +4,16 @@
 @await Component.InvokeAsync("Widget", new { widgetZone = "body_start_html_tag_after" })
 @await Html.PartialAsync("_Notifications")
 <div class="master-wrapper-page">
-        @await Html.PartialAsync("_JavaScriptDisabledWarning")
-        @await Html.PartialAsync("_OldInternetExplorerWarning")
-        <div class="admin-header-link">
-           @await Component.InvokeAsync("AdminHeaderLinks")
-        </div>    
-        @await Html.PartialAsync("_Header")
-        <script type="text/javascript" asp-location="Footer">
-            AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
-        </script>
-        @*<div class="header-menu">
+    @await Html.PartialAsync("_JavaScriptDisabledWarning")
+    @await Html.PartialAsync("_OldInternetExplorerWarning")
+    <div class="admin-header-link">
+        @await Component.InvokeAsync("AdminHeaderLinks")
+    </div>
+    @await Html.PartialAsync("_Header")
+    <script type="text/javascript" asp-location="Footer">
+        AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+    </script>
+    @*<div class="header-menu">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -22,32 +22,49 @@
                 </div>
             </div>
         </div>*@
-        <div class="master-wrapper-content">
-            @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_top" })
-            <div class="container">
+    <div class="master-wrapper-content">
+        @await Component.InvokeAsync("Widget", new { widgetZone = "home_page_top" })
+        @*<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @await Component.InvokeAsync("Widget", new { widgetZone = "content_before" })
+                </div>
+            </div>
+            ajax loading window
+            <div class="ajax-loading-block-window" style="display: none">
+                <div class="loading-image">
+                </div>
+            </div>
+        </div>*@
+        <div class="master-column-wrapper">
+            <div class="">
                 <div class="row">
-                    <div class="col-md-12">
-                         @await Component.InvokeAsync("Widget", new { widgetZone = "content_before" })
-                    </div>
-                </div>
-                @*ajax loading window*@
-                <div class="ajax-loading-block-window" style="display: none">
-                    <div class="loading-image">
-                    </div>
+                    @RenderBody()
                 </div>
             </div>
-            <div class="master-column-wrapper">
-                <div class="">
-                    <div class="row">
-                        @RenderBody()
-                    </div>
-                </div>
-            </div>
-            @await Component.InvokeAsync("Widget", new { widgetZone = "content_after" })
         </div>
-        @await Component.InvokeAsync("Footer")
-        @* Use this content for back to top page scrolling *@
-        <div class="scroll-back-button" id="backTop" style="display: block;"></div>
+        @await Component.InvokeAsync("Widget", new { widgetZone = "content_after" })
+    </div>
+    <div class="home-page-footer-banners">
+        <div class="slider-wrapper anywhere-sliders-nivo-slider">
+            <a>
+                <img src="http://themes.venture1.nop-templates.com/images/thumbs/0000387.jpeg" class="nivo-main-image" />
+            </a>
+        </div>
+        <div class="slider-wrapper anywhere-sliders-nivo-slider">
+            <a>
+                <img src="http://themes.venture1.nop-templates.com/images/thumbs/0000388.jpeg" class="nivo-main-image" />
+            </a>
+        </div>
+        <div class="slider-wrapper anywhere-sliders-nivo-slider">
+            <a>
+                <img src="http://themes.venture1.nop-templates.com/images/thumbs/0000389.jpeg" class="nivo-main-image" />
+            </a>
+        </div>
+    </div>
+    @await Component.InvokeAsync("Footer")
+    @* Use this content for back to top page scrolling *@
+    <div class="scroll-back-button" id="backTop" style="display: block;"></div>
 </div>
 @await Component.InvokeAsync("EuCookieLaw")
 @await Component.InvokeAsync("Widget", new { widgetZone = "body_end_html_tag_before" })

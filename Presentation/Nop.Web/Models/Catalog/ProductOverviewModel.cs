@@ -8,6 +8,14 @@ namespace Nop.Web.Models.Catalog
 {
     public partial class ProductOverviewModel : BaseNopEntityModel
     {
+        private ICollection<ProductCategory> _productCategories;
+
+        public virtual ICollection<ProductCategory> ProductCategories
+        {
+            get { return _productCategories ?? (_productCategories = new List<ProductCategory>()); }
+            set { _productCategories = value; }
+        }
+
         public ProductOverviewModel()
         {
             ProductPrice = new ProductPriceModel();

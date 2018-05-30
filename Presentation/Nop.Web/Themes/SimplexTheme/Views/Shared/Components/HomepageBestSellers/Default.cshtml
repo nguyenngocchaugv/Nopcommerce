@@ -10,7 +10,7 @@
                     {
                         <div class="ribbon-wrapper">
                             <div class="picture">
-                                <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" alt="@item.ShortDescription" title="@item.DefaultPictureModel.Title" /></a>
+                                <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })"><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" alt="@item.ShortDescription" title="@item.DefaultPictureModel.Title" /></a>
                             </div>
                             <a href="#" class="ribbon-position top-right">
                                 <div class="product-ribbon">
@@ -23,13 +23,13 @@
                     else
                     {
                         <div class="picture">
-                            <a><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" alt="@item.ShortDescription" title="@item.DefaultPictureModel.Title" /></a>
+                            <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })"><img class="picture-img" src="@item.DefaultPictureModel.ImageUrl" alt="@item.ShortDescription" title="@item.DefaultPictureModel.Title" /></a>
                         </div>
 
                     }
                     <div class="details">
                         <h2 class="product-title">
-                            <a href="#">@item.Name</a>
+                            <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })">@item.Name</a>
                         </h2>
                         <div class="add-info">
                             <div class="prices">

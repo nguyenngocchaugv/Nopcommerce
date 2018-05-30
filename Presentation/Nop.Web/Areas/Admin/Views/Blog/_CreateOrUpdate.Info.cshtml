@@ -61,7 +61,7 @@
                     <nop-label asp-for="Title" />
                 </div>
                 <div class="col-md-9">
-                    <nop-editor asp-for="Title" asp-required="true"/>
+                    <nop-editor asp-for="Title" asp-required="true" />
                     <span asp-validation-for="Title"></span>
                 </div>
             </div>
@@ -71,9 +71,9 @@
                 </div>
                 <div class="col-md-9">
                     <div class="input-group input-group-required">
-                        <nop-editor asp-for="Body" asp-template="RichEditor"/>
+                        <nop-editor asp-for="Body" asp-template="RichEditor" />
                         <div class="input-group-btn">
-                            <nop-required/>
+                            <nop-required />
                         </div>
                     </div>
                     <span asp-validation-for="Body"></span>
@@ -95,6 +95,15 @@
                 <div class="col-md-9">
                     <nop-editor asp-for="Tags" />
                     <span asp-validation-for="Tags"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    <nop-label asp-for="PictureId" />
+                </div>
+                <div class="col-md-9">
+                    <nop-editor asp-for="PictureId" />
+                    <span asp-validation-for="PictureId"></span>
                 </div>
             </div>
             <div class="form-group">

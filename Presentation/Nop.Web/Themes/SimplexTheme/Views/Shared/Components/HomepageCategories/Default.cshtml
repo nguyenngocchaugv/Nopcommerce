@@ -43,7 +43,7 @@
                         </div>
                         <div class="category-products">
                             <div class="product-grid most-wanted">This is Most Wanted</div>
-                            <div class="product-grid best-sellers">@await Component.InvokeAsync("HomepageBestSellers")</div>
+                            <div class="product-grid best-sellers">@await Component.InvokeAsync("HomepageBestSellers", new { categoryId = item.Id })</div>
                             <div class="product-grid new-products">This is New Products</div>
                         </div>
                     </div>

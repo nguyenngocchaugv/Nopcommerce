@@ -1,0 +1,144 @@
+﻿@model ManufacturerNavigationModel
+@if (Model.Manufacturers.Count > 0)
+{
+    <div class="home-page-bottom-wrapper">
+        <div class="carousel-wrapper">
+            <div id="jcarousel-1-183" class="jCarouselMainWrapper">
+                <div class="nop-jcarousel manufacturer-grid">
+                    <div class="title carousel-title">
+                        <button type="button" class="slick-prev slick-arrow">Previous</button>
+                        <strong>Manufacturers</strong>
+                        <button type="button" data-role="none" class="slick-next slick-arrow">Next</button>
+                    </div>
+                    <div class="slick-carousel ">
+                        
+                            @foreach (var manufacturer in Model.Manufacturers)
+                            {
+                                <div class="carousel-item slick-slide ">
+                                    <div class="item-box">
+                                        <div class="manufacturer-item">
+                                            <h2 class="title">
+                                                <a href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })">@manufacturer.Name</a>
+                                            </h2>
+                                            <div class="picture">
+                                                <a>
+                                                    <img src="@manufacturer.ModelPicture.ImageUrl" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="home-page-featured-video-wrapper">
+            <div class="home-page-video-title title">
+                <strong>Video</strong>
+            </div>
+            <div class="home-page-featured-video"><iframe frameborder="0" src="https://www.youtube.com/embed/mrn_Sfirg40?rel=0"></iframe></div>
+        </div>
+    </div>
+    @*@foreach (var manufacturer in Model.Manufacturers)
+        {
+            <div class="box">
+                <div class="picture">
+                    <a class="manufacturer">
+                        <img src="@manufacturer.ModelPicture.ImageUrl" />
+                    </a>
+                </div>
+                <div class="title">
+                    <a href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })"><span>@manufacturer.Name</span></a>
+                </div>
+            </div>
+        }*@
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var carouselHtmlElementId = "jcarousel-1-183";
+        var jCarousel = $("#" + carouselHtmlElementId + " .slick-carousel");
+
+        if (jCarousel.length === 0) {
+            return;
+        }
+
+        var numOfSlidesToScroll = 1;
+        var loopItems = true;
+        var pauseOnHover = true;
+        var isRtl = false;
+        var autoscrollTimeout = 3;
+        var autoscroll = autoscrollTimeout > 0 ? true : false;
+        var navigationArrows = true;
+        var carouselArrowsContainer = "#" + carouselHtmlElementId + " .carousel-title";
+        var navigationDots = false;
+        // TODO: Make a validator for this setting.
+        var numberOfVisibleItems = 6 < 1 ? 1 : 6;
+        var animationSpeedString = 'slow';
+        var initialSlide = 1 - 1;
+        var prevArrowHtml = '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>';
+        var nextArrowHtml = '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>';
+        var animationSpeed;
+
+        switch (animationSpeedString) {
+            case 'slow':
+                animationSpeed = 300;
+                break;
+            case 'fast':
+                animationSpeed = 150;
+                break;
+            default:
+                animationSpeed = 0;
+        }
+
+        var responsiveBreakpointsObj = {};
+
+        try {
+
+            responsiveBreakpointsObj = JSON.parse('[{"breakpoint":1064,"settings":{"slidesToShow":3}},{"breakpoint":675,"settings":{"slidesToShow":2}},{"breakpoint":300,"settings":{"slidesToShow":1}}]');
+
+            for (var i = 0; i < responsiveBreakpointsObj.length; i++) {
+                if (responsiveBreakpointsObj[i].settings.slidesToShow < numOfSlidesToScroll) {
+                    responsiveBreakpointsObj[i].settings.slidesToScroll = responsiveBreakpointsObj[i].settings.slidesToShow;
+                }
+            }
+        }
+        catch (e) {
+            console.log('Invalid slick slider responsive breakpoints setting value!');
+        }
+
+        jCarousel.on('init', function () {
+            $.event.trigger({ type: "newProductsAddedToPageEvent" });
+            $(".carousel-title").show();
+        });
+
+        jCarousel.slick({
+            rtl: isRtl,
+            infinite: loopItems,
+            slidesToShow: numberOfVisibleItems,
+            slidesToScroll: numOfSlidesToScroll,
+            dots: navigationDots,
+            speed: animationSpeed,
+            autoplay: autoscroll,
+            autoplaySpeed: autoscrollTimeout * 1000,
+            arrows: navigationArrows,
+            appendArrows: carouselArrowsContainer,
+            cssEase: 'linear',
+            respondTo: 'slider',
+            edgeFriction: 0.05,
+            initialSlide: initialSlide,
+            pauseOnHover: pauseOnHover,
+            draggable: false,
+            prevArrow: prevArrowHtml,
+            nextArrow: nextArrowHtml,
+            responsive: responsiveBreakpointsObj
+        });
+
+        var slidesCount = jCarousel.slick('getSlick').slideCount;
+
+        if (slidesCount > numberOfVisibleItems && navigationArrows) {
+            $('#' + carouselHtmlElementId + ' .carousel-title').addClass('has-navigation');
+        }
+    });
+</script>

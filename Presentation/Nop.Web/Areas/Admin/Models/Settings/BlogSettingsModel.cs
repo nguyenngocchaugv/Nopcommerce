@@ -11,6 +11,10 @@ namespace Nop.Web.Areas.Admin.Models.Settings
         public bool Enabled { get; set; }
         public bool Enabled_OverrideForStore { get; set; }
 
+        [NopResourceDisplayName("Admin.Configuration.Settings.Blog.ShowBlogOnMainPage")]
+        public bool ShowBlogOnMainPage { get; set; }
+        public bool ShowBlogOnMainPage_OverrideForStore { get; set; }
+
         [NopResourceDisplayName("Admin.Configuration.Settings.Blog.PostsPageSize")]
         public int PostsPageSize { get; set; }
         public bool PostsPageSize_OverrideForStore { get; set; }

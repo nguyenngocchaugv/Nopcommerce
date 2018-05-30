@@ -48,3 +48,20 @@
     @await Component.InvokeAsync("Widget", new { widgetZone = "searchbox" })
 </form>
 <div class="search-opener">Search</div>
+<script type="text/javascript" asp-location="Footer">
+    $(document).ready(function () {
+        $('.search-opener').click(
+            function () {
+                if ($(this).hasClass('open')) {
+                    $('.header-lower.slider-enable').removeClass('search-overlay-open');
+                    $('#small-search-box-form').removeClass('open');
+                    $(this).removeClass('open');
+                } else {
+                    $('.header-lower.slider-enable').addClass('search-overlay-open');
+                    $('#small-search-box-form').addClass('open');
+                    $(this).addClass('open');
+                }
+            }
+        );
+    });
+</script>

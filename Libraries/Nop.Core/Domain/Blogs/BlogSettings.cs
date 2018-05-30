@@ -13,6 +13,11 @@ namespace Nop.Core.Domain.Blogs
         public bool Enabled { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to show blog on the main page
+        /// </summary>
+        public bool ShowBlogOnMainPage { get; set; }
+
+        /// <summary>
         /// Gets or sets the page size for posts
         /// </summary>
         public int PostsPageSize { get; set; }

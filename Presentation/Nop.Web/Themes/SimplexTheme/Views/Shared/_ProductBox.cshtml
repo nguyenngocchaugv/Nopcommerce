@@ -27,7 +27,7 @@
     {
         <div class="ribbon-wrapper">
             <div class="picture">
-                <a><img class="picture-img" src="@Model.DefaultPictureModel.ImageUrl" alt="@Model.ShortDescription" title="@Model.DefaultPictureModel.Title" /></a>
+                <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })"><img class="picture-img" src="@Model.DefaultPictureModel.ImageUrl" alt="@Model.ShortDescription" title="@Model.DefaultPictureModel.Title" /></a>
             </div>
             <a href="#" class="ribbon-position top-right">
                 <div class="product-ribbon">
@@ -40,7 +40,7 @@
     else
     {
         <div class="picture">
-            <a><img class="picture-img" src="@Model.DefaultPictureModel.ImageUrl" alt="@Model.ShortDescription" title="@Model.DefaultPictureModel.Title" /></a>
+            <a href="@Url.RouteUrl("Category", new { SeName = Model.SeName })" ><img class="picture-img" src="@Model.DefaultPictureModel.ImageUrl" alt="@Model.ShortDescription" title="@Model.DefaultPictureModel.Title" /></a>
         </div>
 
     }
