@@ -40,7 +40,6 @@
 
                     $('.thumb-item img').on('click', function () {
                         imgpath = $(this).attr('data-defaultsize');
-                        magdata.items.src = imgpath;
                         magdata.index = Number($(this).attr('index'));
 
                         $('#zoom1').magnificPopup(magdata);
