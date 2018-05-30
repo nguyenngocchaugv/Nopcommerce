@@ -69,6 +69,8 @@ namespace Nop.Web.Models.Catalog
         public bool IsRental { get; set; }
         public DateTime? RentalStartDate { get; set; }
         public DateTime? RentalEndDate { get; set; }
+        public DateTime? AvailableStartDateTimeUtc { get; set; }
+        public DateTime? AvailableEndDateTimeUtc { get; set; }
 
         public ManageInventoryMethod ManageInventoryMethod { get; set; }
 

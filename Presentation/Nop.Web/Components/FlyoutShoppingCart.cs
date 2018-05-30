@@ -32,5 +32,6 @@ namespace Nop.Web.Components
             var model = _shoppingCartModelFactory.PrepareMiniShoppingCartModel();
             return View(model);
         }
+
     }
 }

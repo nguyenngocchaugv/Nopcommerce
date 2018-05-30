@@ -43,17 +43,17 @@ namespace Nop.Web.Components
             this._cacheManager = cacheManager;
         }
 
-        public IViewComponentResult Invoke(int? productThumbPictureSize)
+        public IViewComponentResult Invoke(int? productThumbPictureSize, int categoryId)
         {
             if (!_catalogSettings.ShowBestsellersOnHomepage || _catalogSettings.NumberOfBestsellersOnHomepage == 0)
                 return Content("");
 
             //load and cache report
-            var report = _cacheManager.Get(string.Format(ModelCacheEventConsumer.HOMEPAGE_BESTSELLERS_IDS_KEY, _storeContext.CurrentStore.Id),
-                () => _orderReportService.BestSellersReport(
+            var report = _orderReportService.BestSellersReport(
+                        categoryId: categoryId,
                         storeId: _storeContext.CurrentStore.Id,
                         pageSize: _catalogSettings.NumberOfBestsellersOnHomepage)
-                    .ToList());
+                    .ToList();
 
             //load products
             var products = _productService.GetProductsByIds(report.Select(x => x.ProductId).ToArray());

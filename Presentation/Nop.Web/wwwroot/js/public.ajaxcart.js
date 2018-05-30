@@ -76,7 +76,7 @@ var AjaxCart = {
     },
 
     success_process: function (response) {
-        if (response.updatetopcartsectionhtml) {
+           if (response.updatetopcartsectionhtml) {
             $(AjaxCart.topcartselector).html(response.updatetopcartsectionhtml);
         }
         if (response.updatetopwishlistsectionhtml) {
@@ -111,6 +111,32 @@ var AjaxCart = {
         }
         if (response.redirect) {
             location.href = response.redirect;
+            return true;
+        }
+        return false;
+    },
+
+    //remove cart item id
+    removecartitem: function (id) {
+        if (this.loadWaiting != false) {
+            return false;
+        }
+        this.setLoadWaiting(true);
+
+        $.ajax({
+            cache: false,
+            url: "shoppingcart/removecartitem",
+            data: { id: id },
+            type: 'post',
+            success: this.success_remove_process,
+            complete: this.resetLoadWaiting,
+            error: this.ajaxFailure
+        });
+    },
+
+    success_remove_process: function (response) {
+        if (response.success) {
+            location.href = location.href;
             return true;
         }
         return false;

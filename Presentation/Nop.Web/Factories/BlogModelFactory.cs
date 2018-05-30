@@ -10,11 +10,13 @@ using Nop.Services.Blogs;
 using Nop.Services.Common;
 using Nop.Services.Customers;
 using Nop.Services.Helpers;
+using Nop.Services.Localization;
 using Nop.Services.Media;
 using Nop.Services.Seo;
 using Nop.Web.Framework.Security.Captcha;
 using Nop.Web.Infrastructure.Cache;
 using Nop.Web.Models.Blogs;
+using Nop.Web.Models.Media;
 
 namespace Nop.Web.Factories
 {
@@ -31,6 +33,10 @@ namespace Nop.Web.Factories
         private readonly IPictureService _pictureService;
         private readonly IDateTimeHelper _dateTimeHelper;
         private readonly IStaticCacheManager _cacheManager;
+        private readonly IWebHelper _webHelper;
+        private readonly ILocalizationService _localizationService;
+
+
 
         private readonly MediaSettings _mediaSettings;
         private readonly BlogSettings _blogSettings;
@@ -47,6 +53,8 @@ namespace Nop.Web.Factories
             IPictureService pictureService,
             IDateTimeHelper dateTimeHelper,
             IStaticCacheManager cacheManager,
+            IWebHelper webHelper,
+            ILocalizationService localizationService,
             MediaSettings mediaSettings,
             BlogSettings blogSettings,
             CustomerSettings customerSettings,
@@ -62,6 +70,8 @@ namespace Nop.Web.Factories
             this._blogSettings = blogSettings;
             this._customerSettings = customerSettings;
             this._captchaSettings = captchaSettings;
+            this._webHelper = webHelper;
+            this._localizationService = localizationService;
         }
 
         #endregion
@@ -125,6 +135,23 @@ namespace Nop.Web.Factories
             model.CreatedOn = _dateTimeHelper.ConvertToUserTime(blogPost.StartDateUtc ?? blogPost.CreatedOnUtc, DateTimeKind.Utc);
             model.Tags = blogPost.ParseTags().ToList();
             model.AddNewComment.DisplayCaptcha = _captchaSettings.Enabled && _captchaSettings.ShowOnBlogCommentPage;
+
+
+            var pictureSize = _mediaSettings.CategoryThumbPictureSize;
+            //prepare picture model
+            var blogPictureCacheKey = string.Format(ModelCacheEventConsumer.BLOG_PICTURE_MODEL_KEY, model.Id, pictureSize, true, _workContext.WorkingLanguage.Id, _webHelper.IsCurrentConnectionSecured(), _storeContext.CurrentStore.Id);
+            model.Picture = _cacheManager.Get(blogPictureCacheKey, () =>
+            {
+                var picture = _pictureService.GetPictureById(blogPost.PictureId);
+                var pictureModel = new PictureModel
+                {
+                    FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
+                    ImageUrl = _pictureService.GetPictureUrl(picture, pictureSize),
+                    Title = string.Format(_localizationService.GetResource("Media.Category.ImageLinkTitleFormat"), model.SeName),
+                    AlternateText = string.Format(_localizationService.GetResource("Media.Category.ImageAlternateTextFormat"), model.SeName)
+                };
+                return pictureModel;
+            });
 
             //number of blog comments
             var storeId = _blogSettings.ShowBlogCommentsPerStore ? _storeContext.CurrentStore.Id : 0;

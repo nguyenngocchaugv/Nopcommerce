@@ -1129,7 +1129,7 @@ namespace Nop.Web.Factories
                     MarkAsNew = product.MarkAsNew &&
                         (!product.MarkAsNewStartDateTimeUtc.HasValue || product.MarkAsNewStartDateTimeUtc.Value < DateTime.UtcNow) &&
                         (!product.MarkAsNewEndDateTimeUtc.HasValue || product.MarkAsNewEndDateTimeUtc.Value > DateTime.UtcNow),
-                    ParentCategoryId = product.ParentGroupedProductId
+                    ProductCategories = product.ProductCategories
                 };
 
                 //price
@@ -1193,7 +1193,9 @@ namespace Nop.Web.Factories
                 ManageInventoryMethod = product.ManageInventoryMethod,
                 StockAvailability = product.FormatStockMessage("", _localizationService, _productAttributeParser, _dateRangeService),
                 HasSampleDownload = product.IsDownload && product.HasSampleDownload,
-                DisplayDiscontinuedMessage = !product.Published && _catalogSettings.DisplayDiscontinuedMessageForUnpublishedProducts
+                DisplayDiscontinuedMessage = !product.Published && _catalogSettings.DisplayDiscontinuedMessageForUnpublishedProducts,
+                AvailableStartDateTimeUtc = product.AvailableStartDateTimeUtc,
+                AvailableEndDateTimeUtc = product.AvailableEndDateTimeUtc
             };
 
             //automatically generate product description?

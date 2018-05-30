@@ -1,0 +1,36 @@
+﻿@model BlogPostListModel
+
+<div class="rich-blog-homepage">
+    <div class="title">
+        <strong>Latest From Blog</strong>
+    </div>
+    <div class="blog-posts">
+        @foreach (var item in Model.BlogPosts)
+        {
+            var newDay = item.CreatedOn.ToString("dd");
+            var newMonth = item.CreatedOn.ToString("MMM");
+            <div class="blog-post" style="height:573px;">
+                <div class="post-primary">
+                    <a class="post-picture" href="/@item.SeName">
+                        <img src="@item.Picture.ImageUrl" alt="@item.Title" title="Having fun on the road">
+                    </a>
+                    <span class="post-date">
+                        <span class="day">@newDay</span>
+                        <span class="month">@newMonth</span>
+                        <span class="year">@item.CreatedOn.Year</span>
+                    </span>
+                    <a class="read-more" href="@item.SeName">Read More</a>
+                </div>
+                <div class="post-details">
+                    <a class="post-title" href="/having-fun-on-the-road">@item.Title</a>
+                    <div class="post-description">
+                       @Html.Raw(item.BodyOverview)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="view-all">
+        <a href="/blog">View All Blog Posts</a>
+    </div>
+</div>

@@ -36,13 +36,24 @@ $(document).ready(function () {
     });
 
     //Used js for flayout cart
-    $("#flyout-cart").live("mouseenter", function () {
-        $('#flyout-cart-wrapper').addClass('active');
-    });
 
-    $("#flyout-cart").live("mouseleave", function () {
-        $('#flyout-cart-wrapper').removeClass('active');
-    });
+
+    //$("#flyout-cart").hover(
+    //    $('#flyout-cart').addClass('active');
+    //    //function () {
+    //    //    $(this).addClass('active');
+    //    //}
+    //    //, function () {
+    //    //    $(this).removeClass('active');
+    //    //}
+    //);
+    //$("#flyout-cart").live("mouseenter", function () {
+    //    $('#flyout-cart-wrapper').addClass('active');
+    //});
+
+    //$("#flyout-cart").live("mouseleave", function () {
+    //    $('#flyout-cart-wrapper').removeClass('active');
+    //});
     //$(".shopping-cart-link").mouseenter(function () {
     //    $('#flyout-cart-wrapper').addClass('active');
     //});
@@ -130,7 +141,6 @@ $(document).ready(function () {
 
             $(document).scroll(function () {
                 var pos = $(window).scrollTop();
-                console.log(pos);
 
                 if (pos >= position) {
                     backBtn.fadeIn(speed);

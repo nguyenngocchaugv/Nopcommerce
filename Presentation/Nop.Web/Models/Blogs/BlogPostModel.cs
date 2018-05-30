@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FluentValidation.Attributes;
 using Nop.Web.Framework.Mvc.Models;
+using Nop.Web.Models.Media;
 using Nop.Web.Validators.Blogs;
 
 namespace Nop.Web.Models.Blogs
@@ -27,6 +28,8 @@ namespace Nop.Web.Models.Blogs
         public bool AllowComments { get; set; }
         public int NumberOfComments { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public PictureModel Picture { get; set; }
 
         public IList<string> Tags { get; set; }
 

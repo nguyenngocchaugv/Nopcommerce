@@ -1,5 +1,5 @@
 ﻿@model MiniShoppingCartModel
-<div id="flyout-cart" class="cart-wrapper">
+<div id="flyout-cart" class="cart-wrapper" onclick="setLocation('@Url.RouteUrl("Checkout")')">
     <div id="topcartlink">
         <a class="ico-cart">
             @T("ShoppingCart")
@@ -52,9 +52,10 @@
                                         @Html.Raw(item.AttributeInfo)
                                     </div>
                                 }
-                                <div class="quantity"><span>@item.Quantity</span></div>
+                                <div class="quantity"><span>@T("ShoppingCart.Mini.Quantity"): @item.Quantity</span></div>
                                 <div class="price"><span>@item.UnitPrice</span></div>
                             </div>
+                            <a class="mini-shopping-cart-item-close" onclick="AjaxCart.removecartitem(@item.Id);">Remove</a>
                         </div>
                     }
                 </div>
@@ -86,13 +87,11 @@
 
 <script type="text/javascript" asp-location="Footer">
     $(document).ready(function () {
-        $("#flyout-cart").hover(
-            function () {
-                $(this).addClass('active');
-            }
-            , function () {
-                $(this).removeClass('active');
-            }
-        );
+        $("#flyout-cart").live("mouseenter", function () {
+            $('#flyout-cart').addClass('active');
+        });
+        $("#flyout-cart").live("mouseleave", function () {
+            $('#flyout-cart').removeClass('active');
+        });
     });
 </script>

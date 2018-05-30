@@ -195,6 +195,7 @@ namespace Nop.Web.Areas.Admin.Controllers
             if (storeScope > 0)
             {
                 model.Enabled_OverrideForStore = _settingService.SettingExists(blogSettings, x => x.Enabled, storeScope);
+                model.ShowBlogOnMainPage_OverrideForStore = _settingService.SettingExists(blogSettings, x => x.ShowBlogOnMainPage, storeScope);
                 model.PostsPageSize_OverrideForStore = _settingService.SettingExists(blogSettings, x => x.PostsPageSize, storeScope);
                 model.AllowNotRegisteredUsersToLeaveComments_OverrideForStore = _settingService.SettingExists(blogSettings, x => x.AllowNotRegisteredUsersToLeaveComments, storeScope);
                 model.NotifyAboutNewBlogComments_OverrideForStore = _settingService.SettingExists(blogSettings, x => x.NotifyAboutNewBlogComments, storeScope);
@@ -220,6 +221,7 @@ namespace Nop.Web.Areas.Admin.Controllers
              * This behavior can increase performance because cached settings will not be cleared 
              * and loaded from database after each update */
             _settingService.SaveSettingOverridablePerStore(blogSettings, x => x.Enabled, model.Enabled_OverrideForStore, storeScope, false);
+            _settingService.SaveSettingOverridablePerStore(blogSettings, x => x.ShowBlogOnMainPage, model.ShowBlogOnMainPage_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(blogSettings, x => x.PostsPageSize, model.PostsPageSize_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(blogSettings, x => x.AllowNotRegisteredUsersToLeaveComments, model.AllowNotRegisteredUsersToLeaveComments_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(blogSettings, x => x.NotifyAboutNewBlogComments, model.NotifyAboutNewBlogComments_OverrideForStore, storeScope, false);

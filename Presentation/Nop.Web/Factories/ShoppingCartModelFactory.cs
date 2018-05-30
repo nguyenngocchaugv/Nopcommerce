@@ -1016,8 +1016,16 @@ namespace Nop.Web.Factories
                         model.Items.Add(cartItemModel);
                     }
                 }
+                else
+                {
+                    model.SubTotal = _priceFormatter.FormatPrice(0 , false, _workContext.WorkingCurrency, _workContext.WorkingLanguage, false);
+                }
             }
-            
+            else
+            {
+                model.SubTotal = _priceFormatter.FormatPrice(0, false, _workContext.WorkingCurrency, _workContext.WorkingLanguage, false);
+            }
+
             return model;
         }
 

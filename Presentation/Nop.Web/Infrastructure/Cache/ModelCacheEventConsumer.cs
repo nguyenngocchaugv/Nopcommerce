@@ -634,6 +634,19 @@ namespace Nop.Web.Infrastructure.Cache
         /// {0} : language ID
         /// {1} : current store ID
         /// </remarks>
+        /// 
+        /// <summary>
+        /// Key for category picture caching
+        /// </summary>
+        /// <remarks>
+        /// {0} : category id
+        /// {1} : picture size
+        /// {2} : value indicating whether a default picture is displayed in case if no real picture exists
+        /// {3} : language ID ("alt" and "title" can depend on localized category name)
+        /// {4} : is connection SSL secured?
+        /// {5} : current store ID
+        /// </remarks>
+        public const string BLOG_PICTURE_MODEL_KEY = "Nop.pres.blog.picture-{0}-{1}-{2}-{3}-{4}-{5}";
         public const string BLOG_TAGS_MODEL_KEY = "Nop.pres.blog.tags-{0}-{1}";
         /// <summary>
         /// Key for blog archive (years, months) block model
