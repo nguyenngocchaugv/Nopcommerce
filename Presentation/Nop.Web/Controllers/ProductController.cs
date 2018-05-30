@@ -172,6 +172,8 @@ namespace Nop.Web.Controllers
 
             //model
             var model = _productModelFactory.PrepareProductDetailsModel(product, updatecartitem, false);
+            var reviews = new ProductReviewsModel();
+            model.ProductReviewsModel = _productModelFactory.PrepareProductReviewsModel(reviews, product);
             //template
             var productTemplateViewPath = _productModelFactory.PrepareProductTemplateViewPath(product);
 

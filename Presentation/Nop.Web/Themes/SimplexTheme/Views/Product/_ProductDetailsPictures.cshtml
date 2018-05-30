@@ -3,13 +3,15 @@
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/magnific-popup/jquery.magnific-popup.min.js");
     Html.AddCssFileParts("~/lib/magnific-popup/magnific-popup.css");
 }
-<div class="gallery">
-    <div class="picture">
+<div class="gallery sevenspikes-cloudzoom-gallery">
+    <div class="picture-wrapper">
         @if (Model.DefaultPictureZoomEnabled)
         {
-            <a href="@Model.DefaultPictureModel.FullSizeImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-lightbox-anchor-@Model.Id">
-                <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" id="main-product-img-@Model.Id" />
-            </a>
+            <div class="picture" data-zoom-window-width="244" data-zoom-window-height="257">
+                <a href="@Model.DefaultPictureModel.FullSizeImageUrl" title="@Model.DefaultPictureModel.Title" id="main-product-img-lightbox-anchor-@Model.Id">
+                    <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" id="main-product-img-@Model.Id" />
+                </a>
+            </div>
              <script type="text/javascript" asp-location="Footer">
                 $(document).ready(function () {
                     $('#main-product-img-lightbox-anchor-@Model.Id').magnificPopup(
@@ -33,6 +35,7 @@
             <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" itemprop="image" id="main-product-img-@Model.Id" />
         }
     </div>
+
     @if (Model.PictureModels.Count > 1)
     {
         if (Model.PictureModels.Count <= 3)

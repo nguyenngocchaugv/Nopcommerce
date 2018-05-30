@@ -1,6 +1,7 @@
 ﻿@model ProductDetailsModel
 @using Microsoft.AspNetCore.Http.Extensions
 @using Nop.Core.Domain.Seo;
+@using Nop.Core.Domain.Orders
 @inject SeoSettings seoSettings
 @{
     Layout = "_ColumnsOne";
@@ -41,6 +42,8 @@
         Html.AddHeadCustomParts("<meta property=\"twitter:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
         Html.AddHeadCustomParts("<meta property=\"twitter:url\" content=\"" + this.Url.ActionContext.HttpContext.Request.GetEncodedUrl() + "\" />");
     }
+    var quantity = 1;
+    var addtowishlistlink = Url.RouteUrl("AddProductToCart-Catalog", new { productId = Model.Id, shoppingCartTypeId = (int)ShoppingCartType.Wishlist, quantity = quantity });
 }
 <!--product breadcrumb-->
 <div class="breadcrumb-wrapper">
@@ -49,139 +52,278 @@
 @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_after_breadcrumb", additionalData = Model.Id })
 <div class="page product-details-page">
     <div class="page-body">
-        @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_top", additionalData = Model.Id })
         <form asp-route="Product" asp-route-sename="@Model.SeName" method="post" id="product-details-form">
             <div itemscope itemtype="http://schema.org/Product" data-productid="@Model.Id">
-                <div class="product-essential">
-                    <div class="row">
-                        <div class="col-md-4">
-                            @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_before_pictures", additionalData = Model.Id })
-                            <!--product pictures-->
-                            @await Html.PartialAsync("_ProductDetailsPictures", Model)
-                            @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_after_pictures", additionalData = Model.Id })
-                        </div>
-                        <div class="col-md-8">
-                            @await Html.PartialAsync("_Discontinued", Model)
-                            <div class="overview">
-                                <div class="product-name panel-heading">
-                                    <h1 itemprop="name">
-                                        @Model.Name
-                                    </h1>
-                                </div>
-                                <!--short description-->
-                                @if (!string.IsNullOrEmpty(Model.ShortDescription))
+                <div class="product-essential-wrapper">
+                    <div class="product-essential">
+                        <!--product pictures-->
+                        @await Html.PartialAsync("_ProductDetailsPictures", Model)
+                        <div class="overview">
+                            <div class="product-name">
+                                <h1 itemprop="name">
+                                    @Model.Name
+                                </h1>
+                            </div>
+                            <!--await Html.PartialAsync("_ProductManufacturers", Model.ProductManufacturers)-->
+                            <div class="manufacturers">
+                                <span class="label">@T("Products.Manufacturer"):</span>
+                                @if (Model.ProductManufacturers.Count == 1)
                                 {
-                                <div class="short-description">
-                                    @Html.Raw(Model.ShortDescription)
-                                </div>
+                                    <span class="value">
+                                        <a href="/manufacturer-1">@Model.ProductManufacturers[0].Name</a>
+                                    </span>
                                 }
-                                @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_overview_top", additionalData = Model.Id })
-                                <!--product reviews-->
-                                @await Html.PartialAsync("_ProductReviewOverview", Model.ProductReviewOverview)
-                                <!--availability-->
-                                @await Html.PartialAsync("_Availability", Model)
-                                <!--product manufacturers-->
-                                @await Html.PartialAsync("_ProductManufacturers", Model.ProductManufacturers)
-                                <!--SKU, MAN, GTIN, vendor-->
-                                @await Html.PartialAsync("_SKU_Man_GTIN_Ven", Model)
-                                <!--delivery-->
-                                @await Html.PartialAsync("_DeliveryInfo", Model)
-                                <!--sample download-->
-                                @await Html.PartialAsync("_DownloadSample", Model)
-                                <!--rental info-->
-                                @{
-                                    var dataDictRental = new ViewDataDictionary(ViewData);
-                                    dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
-                                    @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
-                                }
-                                <!--product price-->
-                                @{
-                                    var dataDictPrice = new ViewDataDictionary(ViewData);
-                                    dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
-                                    @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
-                                }
-                                <!--product attributes-->
-                                @{
-                                    var dataDictAttributes = new ViewDataDictionary(ViewData);
-                                    dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
-                                    @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
-                                }
-                                <!--gift card-->
-                                @{
-                                    var dataDictGiftCard = new ViewDataDictionary(ViewData);
-                                    dataDictGiftCard.TemplateInfo.HtmlFieldPrefix = $"giftcard_{Model.Id}";
-                                    @await Html.PartialAsync("_GiftCardInfo", Model.GiftCard, dataDictGiftCard)
-                                }
-                                <!--addtocart-->
-                                @{
-                                    var dataDictAddToCart = new ViewDataDictionary(ViewData);
-                                    dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                    @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
-                                }
-                                <div class="overview-buttons">
-                                    <!--wishlist, compare, email a friend-->
-                                    @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_inside_overview_buttons_before", additionalData = Model.Id })
-                                    @{
-                                        var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
-                                        dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                        @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
+                                else if (Model.ProductManufacturers.Count > 1)
+                                {
+                                    var i = 0;
+                                    @foreach (var m in Model.ProductManufacturers)
+                                    {
+                                        <span class="value">
+                                            <a href="/manufacturer-1">
+                                                @if (i > 0)
+                                                {
+                                                    <a>,</a>
+                                                }
+                                                @m.Name
+                                            </a>
+                                        </span>
+                                        i++;
                                     }
-                                    @await Html.PartialAsync("_CompareProductsButton", Model)
-                                    @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
-                                    @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_inside_overview_buttons_after", additionalData = Model.Id })
-                                </div>
-                                @await Html.PartialAsync("_ShareButton", Model)
-                                @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_overview_bottom", additionalData = Model.Id })
+                                }
                             </div>
-                        </div>
-                        <div class="col-md-12 product-details-tabs">
-                            <ul class="nav nav-tabs">
-                                @if (!string.IsNullOrEmpty(Model.FullDescription))
-                                {
-                                <li class="active"><a href="#description" data-toggle="tab">@T("account.vendorinfo.description")</a></li>
-                                }
-                                @if (Model.ProductSpecifications.Count > 0)
-                                {
-                                <li><a href="#specification" data-toggle="tab">@T("Products.Specs")</a></li>
-                                }
-                                @if (Model.ProductTags.Count > 0)
-                                {
-                                <li><a href="#tags" data-toggle="tab">@T("Products.Tags")</a></li>
-                                }
-                                @if (Model.TierPrices.Count > 0)
-                                {
-                                <li><a href="#tierprices" data-toggle="tab">@T("Tier Prices")</a></li>
-                                }
-                            </ul>
-                            <div class="tab-content">
-                                @if (!string.IsNullOrEmpty(Model.FullDescription))
-                                {
-                                <div class="full-description tab-pane fade in active" id="description" itemprop="description">
-                                    @Html.Raw(Model.FullDescription)
-                                </div>
-                                }
-                                <div class="product-specification tab-pane fade" id="specification">
-                                    @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecifications)
-                                </div>
-                                <div class="product-tags tab-pane fade" id="tags">
-                                    @await Html.PartialAsync("_ProductTags", Model.ProductTags)
-                                </div>
-                                <div class="product-tierprices tab-pane fade" id="tierprices">
-                                    @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
+                            <div class="additional-details">
+                            </div>
+                            <div class="product-reviews-overview">
+                                <div class="product-review-box">
+                                    <div class="rating">
+                                        <div style="width: @(((Model.ProductReviewOverview.RatingSum * 100) / (Model.ProductReviewOverview.TotalReviews + 0.0001)) / 5)%">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <!--delivery-->
+                            <!--await Html.PartialAsync("_DeliveryInfo", Model)-->
+                            <div class="delivery">
+                                <div class="delivery-date">
+                                    <span class="label">Delivery date:</span>
+                                    <span class="value">@Model.DeliveryDate</span>
+                                </div>
+                            </div>
+                            <!--product price-->
+                            @await Html.PartialAsync("_ProductPrice", Model.ProductPrice)
+                            <div class="short-description">
+                                @Model.ShortDescription
+                            </div>
+                            <!--product attributes-->
+                            <div class="availability-attributes-wrapper">
+                                @{
+                                    //var dataDictAttributes = new ViewDataDictionary(ViewData);
+                                    //dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
+                                    //await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
+                                }
+                            </div>
+                            <div class="overview-buttons">
+                                <label class="qty-label" for="addtocart_@(Model.AddToCart.ProductId)_EnteredQuantity">Qty:</label>
+                                <div class="add-to-cart-qty-wrapper">
+                                    <input class="qty-input" data-val="true" data-val-required="The Qty field is required." id="addtocart_@(Model.AddToCart.ProductId)_EnteredQuantity" name="addtocart_@(Model.AddToCart.ProductId).EnteredQuantity" value="1" type="text">
+                                    <span class="plus">+</span>
+                                    <span class="minus">-</span>
+                                    <script>
+                                        $(".plus").on("click", function () {
+                                            var n = Number($(".qty-input").val());
+                                            if (n < 100)
+                                                $(".qty-input").val(Number($(".qty-input").val()) + 1);
+                                        });
+                                        $(".minus").on("click", function () {
+                                            var n = Number($(".qty-input").val()) - 1;
+                                            if (n < 1) n = 1;
+                                            $(".qty-input").val(n);
+                                        });
+                                    </script>
+                                </div>
+                                <div class="ajax-cart-button-wrapper" data-productid="@Model.AddToCart.ProductId" data-isproductpage="true">
+                                    <input id="add-to-cart-button-@Model.AddToCart.ProductId" type="button" class=" btn btn-primary add-to-cart-button" value="@T("ShoppingCart.AddToCart")" data-productid="@Model.AddToCart.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = @Model.AddToCart.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })', '#product-details-form');return false;" />
+                                </div>
+                                <div class="wishlist-button-wrapper" title="Add to wishlist">
+                                    <div class="add-to-wishlist">
+                                        <input id="add-to-wishlist-button-@(Model.AddToCart.ProductId)" class="button-2 add-to-wishlist-button" value="Add to wishlist" data-productid="@Model.AddToCart.ProductId" onclick="AjaxCart.addproducttocart_catalog('@addtowishlistlink');return false;" type="button">
+                                    </div>
+                                </div>
+                                <div class="compare-products-wrapper" title="Add to compare list">
+                                    <div class="compare-products">                                        
+                                        <input value="Add to compare list" class="button-2 add-to-compare-list-button" onclick="AjaxCart.addproducttocomparelist('/compareproducts/add/@Model.AddToCart.ProductId');return false;" type="button">
+                                    </div>
+                                </div>
+                                <div class="email-a-friend-button-wrapper" title="Email a friend">
+                                    <div class="email-a-friend">
+                                        <input value="Email a friend" class="button-2 email-a-friend-button" onclick="setLocation('/productemailafriend/@(Model.AddToCart.ProductId)')" type="button">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="overview-footer">
+                                <div class="product-social-buttons">
+                                    <label class="product-social-label">Share:</label>
+                                    <ul class="product-social-sharing">
+                                        <li>
+                                            <a class="twitter" title="Share on Twitter" href="javascript:openShareWindow('http://twitter.com/share?url=http://localhost/ @Model.SeName')">Share on Twitter</a>
+                                        </li>
+                                        <li>
+                                            <a class="facebook" title="Share on Facebook" href="javascript:openShareWindow('http://www.facebook.com/sharer.php?u=http://localhost/ @Model.SeName')">Share on Facebook</a>
+                                        </li>
+                                        <li>
+                                            <a class="pinterest" title="Share on Pinterest" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">Share on Pinterest</a>
+                                        </li>
+                                        <li>
+                                            <a class="google" title="Share on Google Plus" href="javascript:openShareWindow('https://plus.google.com/share?url=http://localhost/ @Model.SeName')">Share on Google Plus</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_before_collateral", additionalData = Model.Id })
-                <div class="product-collateral">
-                    <div class="row">
-                        @await Component.InvokeAsync("ProductsAlsoPurchased", new { productId = Model.Id })
-                        @await Component.InvokeAsync("RelatedProducts", new { productId = Model.Id })
                     </div>
                 </div>
             </div>
         </form>
-        @await Component.InvokeAsync("Widget", new { widgetZone = "productdetails_bottom", additionalData = Model.Id })
     </div>
+    <div class="product-page-bottom">
+        <div id="quickTabs" class="productTabs ui-tabs">
+            <div class="productTabs-header">
+                <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-corner-all" role="tablist">
+                    <li id="tab1" class="ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="quickTab-description" aria-labelledby="ui-id-1">
+                        <a class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Overview</a>
+                    </li>
+                    <li id="tab2" class="ui-corner-top" role="tab" tabindex="-1" aria-controls="quickTab-specifications" aria-labelledby="ui-id-2" aria-selected="true">
+                        <a class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Specifications</a>
+                    </li>
+                    <li id="tab3" class="ui-corner-top" role="tab" tabindex="-1" aria-controls="quickTab-reviews" aria-labelledby="ui-id-3" aria-selected="false">
+                        <a class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Reviews</a>
+                    </li>
+                    <li id="tab4" class="ui-corner-top" role="tab" tabindex="-1" aria-controls="quickTab-contact_us" aria-labelledby="ui-id-4" aria-selected="false">
+                        <a class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Contact Us</a>
+                    </li>
+                </ul>
+                <script>
+                    $("#tab1").on("click", function () {
+                        $("#tab1").addClass("ui-tabs-active ui-state-active");
+                        $("#tab2").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab3").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab4").removeClass("ui-tabs-active ui-state-active");
+                        $("#quickTab-description").show();
+                        $("#quickTab-specifications").hide();
+                        $("#quickTab-reviews").hide();
+                        $("#quickTab-contact_us").hide();
+                    });
+                    $("#tab2").on("click", function () {
+                        $("#tab1").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab2").addClass("ui-tabs-active ui-state-active");
+                        $("#tab3").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab4").removeClass("ui-tabs-active ui-state-active");
+                        $("#quickTab-description").hide();
+                        $("#quickTab-specifications").show();
+                        $("#quickTab-reviews").hide();
+                        $("#quickTab-contact_us").hide();
+                    });
+                    $("#tab3").on("click", function () {
+                        $("#tab1").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab2").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab3").addClass("ui-tabs-active ui-state-active");
+                        $("#tab4").removeClass("ui-tabs-active ui-state-active");
+                        $("#quickTab-description").hide();
+                        $("#quickTab-specifications").hide();
+                        $("#quickTab-reviews").show();
+                        $("#quickTab-contact_us").hide();
+                    });
+                    $("#tab4").on("click", function () {
+                        $("#tab1").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab2").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab3").removeClass("ui-tabs-active ui-state-active");
+                        $("#tab4").addClass("ui-tabs-active ui-state-active");
+                        $("#quickTab-description").hide();
+                        $("#quickTab-specifications").hide();
+                        $("#quickTab-reviews").hide();
+                        $("#quickTab-contact_us").show();
+                    });
+                </script>
+            </div>
+            <div class="productTabs-body">
+                <div id="quickTab-description" aria-labelledby="ui-id-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
+                    <div class="full-description" itemprop="description">
+                        @Html.Raw(Model.FullDescription.ToString())
+                    </div>
+                </div>
+                <div id="quickTab-specifications" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
+                    <div class="product-specs-box">
+                        <div class="table-wrapper">
+                            @if (Model.ProductSpecifications.Count > 0)
+                            {
+                                <table class="data-table">
+                                    <colgroup>
+                                        <col width="25%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        @foreach (var Spec in Model.ProductSpecifications)
+                                        {
+                                            <tr class="odd">
+                                                <td class="spec-name">
+                                                    @Spec.SpecificationAttributeName
+                                                </td>
+                                                <td class="spec-value">
+                                                    @Html.Raw(@Spec.ValueRaw)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="title" style="text-align:center;">
+                                    <strong>No specifications available</strong>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div id="quickTab-reviews" aria-labelledby="ui-id-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
+                    <div id="updateTargetId" class="product-reviews-page">
+                        <div class="write-review" id="review-form">
+                            @await Html.PartialAsync("_ProductReviewOverview", Model.ProductReviewsModel)
+                        </div>
+                    </div>
+                </div>
+                <div id="quickTab-contact_us" aria-labelledby="ui-id-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
+                    <div id="contact-us-tab" class="write-review">
+                        <div class="form-fields">
+                            <div class="inputs">
+                                <label for="FullName">Your name</label>
+                                <input placeholder="Enter your name." class="contact_tab_fullname review-title" data-val="true" data-val-required="Enter your name" id="FullName" name="FullName" value="" type="text">
+                                <span class="required">*</span>
+                                <span class="field-validation-valid" data-valmsg-for="FullName" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="inputs">
+                                <label for="Email">Your email</label>
+                                <input placeholder="Enter your email address." class="contact_tab_email review-title" data-val="true" data-val-email="Wrong email" data-val-required="Enter email" id="Email" name="Email" value="" type="email">
+                                <span class="required">*</span>
+                                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
+                            <div class="inputs">
+                                <label for="Enquiry">Enquiry</label>
+<textarea placeholder="Enter your enquiry." class="contact_tab_enquiry review-text" data-val="true" data-val-required="Enter enquiry" id="Enquiry" name="Enquiry"></textarea>
+                                <span class="required">*</span>
+                                <span class="field-validation-valid" data-valmsg-for="Enquiry" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <input id="send-contact-us-form" name="send-email" class="button-1 contact-us-button" value="Submit" type="button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("RelatedProducts", new { productId = Model.Id })
+    @await Component.InvokeAsync("Widget", new { widgetZone = "details_before_footer" })
 </div>
+
